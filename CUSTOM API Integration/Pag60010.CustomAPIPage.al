@@ -115,7 +115,7 @@ page 60010 "Custom API Page"
                     Result: Decimal;
                     Text: Label 'Round(%1, %2, %3) returns %4.';
                 begin
-                    MESSAGE('%1', FORMAT(1000.1, 0, '<Precision,3:5><Standard Format,0>'));
+                    MESSAGE('%1', FORMAT(1000.1, 0, '<Precision,5:5><Standard Format,0>'));
                     Message('%1', Format(DT2Date(CurrentDateTime), 40, '<Standard Format,4>'));
                     Message('%1', Format(DT2Date(CurrentDateTime), 30, '<Weekday Text>, <Month Text> <Day>'));
                     Message('%1', Format(DT2Time(CurrentDateTime), 20, '<Standard Format,9>'));
