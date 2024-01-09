@@ -51,6 +51,43 @@ page 60016 "API Card"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action("Shortcut Keys")
+            {
+                Image = ShortcutToDesktop;
+                ShortcutKey = 'Ctrl+F6';
+                ApplicationArea = ALL;
+                trigger OnAction()
+                begin
+                    Rec.Validate(Name, 'Mohnish');
+                    Rec.Validate(Address, 'Navi Mumbai');
+                    Rec.Modify(true);
+                end;
+            }
+            action("Export Json File")
+            {
+                Image = Export;
+                ApplicationArea = All;
+                trigger OnAction()
+                var
+                    Exportjsonfile: Codeunit "Export Json File";
+                    customapi: Record "Custom API Table";
+                begin
+
+                    customapi.Reset();
+                    customapi.SetRange("No.", Rec."No.");
+                    if customapi.FindFirst() then begin
+                        // Exportjsonfile.RunCustomerApi();
+                        Exportjsonfile.SetCustomApi(customapi);
+                        Exportjsonfile.Run();
+                    end;
+                end;
+            }
+        }
+    }
     trigger OnNextRecord(Steps: Integer): Integer
     begin
         Error('You Can''t go to Next/Previous Record');
