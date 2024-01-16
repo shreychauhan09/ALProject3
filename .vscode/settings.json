@@ -1,4 +1,5 @@
 {
  "editor.fontFamily": "Consolas, 'Courier New', monospace" ,
- "editor.fontSize": 14
+"editor.fontSize": 14,
+"editor.indentSize": "tabSize"
 }
