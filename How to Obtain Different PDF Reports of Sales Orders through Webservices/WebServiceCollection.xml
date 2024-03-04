@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExportedData>
+    <TenantWebServiceCollection>
+        <TenantWebService>
+            <ObjectType>CodeUnit</ObjectType>
+            <ObjectID>50003</ObjectID>
+            <ServiceName>"Obtain PDF Reports WebServices"</ServiceName>
+            <Published>true</Published>
+        </TenantWebService>
+    </TenantWebServiceCollection>
+</ExportedData>
