@@ -93,6 +93,63 @@ page 60016 "API Card"
                     end;
                 end;
             }
+            action("Copy Records")
+            {
+                ApplicationArea = All;
+                Image = Copy;
+                // trigger OnAction()
+                // var
+                //     dt: DataTransfer;
+                //     src: Record "Custom API Table";
+                //     dest: Record "Custom API Line";
+                // begin
+                //     dt.SetTables(Database::"Custom API Table", Database::"Custom API Line");
+                //     dt.AddFieldValue(src.FieldNo(Name), dest.FieldNo(Name));
+                //     dt.AddConstantValue('X', dest.FieldNo("Address 2"));
+                //     dt.AddFieldValue(src.FieldNo(Address), dest.FieldNo(Address));
+                //     // dt.AddSourceFilter(src.FieldNo("S2"), '=%1', 'A');
+                //     dt.CopyFields();
+                // end;
+                // trigger OnAction()
+                // var
+                //     src: Record "Custom API Table";
+                //     dest: Record "Custom API Line";
+                // begin
+                //     src.SetRange("No.", Rec."No.");
+                //     if src.FindFirst() then begin
+                //         dest.Init();
+                //         dest.Name := src.Name;
+                //         dest.Address := src.Address;
+                //         dest."Address 2" := 'X';
+                //         dest.Insert();
+                //         dest.Modify();
+                //     end;
+                // end;
+                trigger OnAction()
+                var
+                    src: Record "Custom API Table";
+                    dest: Record "Custom API Line";
+                begin
+                    if src.FindSet() then
+                        repeat
+                            if not dest.Get(src."No.") then begin
+                                dest.Init();
+                                dest."Document No." := src."No.";
+                                dest.Name := src.Name;
+                                dest.Address := src.Address;
+                                dest."Address 2" := 'X';
+                                dest.Insert();
+                            end else begin
+                                // Record already exists, update it
+                                dest.Name := src.Name;
+                                dest.Address := src.Address;
+                                dest."Address 2" := 'X';
+                                dest.Modify();
+                            end;
+                        until src.Next() = 0;
+                end;
+
+            }
         }
     }
     trigger OnNextRecord(Steps: Integer): Integer
