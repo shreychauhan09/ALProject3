@@ -19,6 +19,7 @@
             "usePublicURLFromServer": true,
             "port": 7049,
             "debugServer": 4711,
+            // "schemaUpdateMode": "ForceSync"
         }
     ]
 }

@@ -48,13 +48,13 @@ page 60016 "API Card"
                 {
                     ToolTip = 'Specifies the value of the SystemId field.';
                 }
-                part(custom; "Custom page Line")
-                {
-                    ApplicationArea = All;
-                    SubPageLink = "Document No." = field("No.");
-                    UpdatePropagation = Both;
+            }
+            part(custom; "Custom page Line")
+            {
+                ApplicationArea = All;
+                SubPageLink = "Document No." = field("No.");
+                UpdatePropagation = Both;
 
-                }
             }
         }
     }

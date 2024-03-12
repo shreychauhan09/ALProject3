@@ -77,12 +77,11 @@ page 60017 "Custom page Line"
                     dest: Record "Custom API Line";
                 begin
                     dt.SetTables(Database::"Custom API Table", Database::"Custom API Line");
-                    dt.AddFieldValue(src.FieldNo("No."), dest.FieldNo("Document No."));
                     dt.AddFieldValue(src.FieldNo(Name), dest.FieldNo(Name));
                     dt.AddConstantValue('X', dest.FieldNo("Address 2"));
                     dt.AddFieldValue(src.FieldNo(Address), dest.FieldNo(Address));
                     // dt.AddSourceFilter(src.FieldNo("S2"), '=%1', 'A');
-                    dt.CopyRows();
+                    dt.CopyFields();
                 end;
             }
         }
