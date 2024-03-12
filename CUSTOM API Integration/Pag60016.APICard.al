@@ -148,7 +148,20 @@ page 60016 "API Card"
                             end;
                         until src.Next() = 0;
                 end;
-
+                // trigger OnAction()
+                // var
+                //     src: Record "Custom API Table";
+                //     dest: Record "Custom API Line";
+                // begin
+                //     dest.SetRange("Document No.", Rec."No.");
+                //     if dest.Find('-') then begin
+                //         dest.INIT;
+                //         dest.Name := src.Name;
+                //         dest.Address := src.Address;
+                //         dest."Address 2" := 'X';
+                //         dest.INSERT;
+                //     end;
+                // end;
             }
         }
     }
