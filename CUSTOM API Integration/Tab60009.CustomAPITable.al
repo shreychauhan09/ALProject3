@@ -3,7 +3,7 @@
 /// </summary>
 table 60009 "Custom API Table"
 {
-    Caption = 'Custom API Table';
+    Caption = 'Custom API Table Header';
     DataClassification = ToBeClassified;
 
     fields
