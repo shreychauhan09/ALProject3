@@ -72,9 +72,10 @@ table 60009 "Custom API Table"
         {
             DataClassification = ToBeClassified;
         }
-        field(14; blob; Blob)
+        field(14; "Rich Text"; Blob)
         {
             DataClassification = ToBeClassified;
+            Description = 'Contains a rich text value';
         }
     }
     keys
@@ -84,4 +85,23 @@ table 60009 "Custom API Table"
             Clustered = true;
         }
     }
+    procedure GetRichText(): Text
+    var
+        InStream: Instream;
+        TextValue: Text;
+    begin
+        Rec.CalcFields(Rec."Rich Text");
+        Rec."Rich Text".CreateInStream(InStream);
+        InStream.ReadText(TextValue);
+        exit(TextValue);
+    end;
+
+    procedure SaveRichText(RichText: Text)
+    var
+        OutStream: OutStream;
+    begin
+        Rec."Rich Text".CreateOutStream(OutStream);
+        OutStream.WriteText(RichText);
+        Rec.Modify();
+    end;
 }

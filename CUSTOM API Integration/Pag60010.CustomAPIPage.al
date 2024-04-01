@@ -83,9 +83,18 @@ page 60010 "Custom API Page"
                     Caption = 'User Name';
                     ApplicationArea = All;
                 }
-                field(blob; Rec.blob)
+                field(RichText; RichText)
                 {
                     ApplicationArea = ALL;
+                    // ExtendedDataType = RichContent;
+                    ExtendedDatatype = RichContent;
+                    MultiLine = true;
+
+                    // Ensures that the value from the RichText variable is persisted in the record
+                    trigger OnValidate()
+                    begin
+                        Rec.SaveRichText(RichText);
+                    end;
                 }
             }
 
@@ -152,7 +161,7 @@ page 60010 "Custom API Page"
                 begin
                     ImportBlob(tempblob, Rec.Name);
                     tempblob.CreateInStream(Instr);
-                    Rec.blob.CreateOutStream(OutStr);
+                    Rec."Rich Text".CreateOutStream(OutStr);
                     CopyStream(OutStr, Instr);
                     Rec.Modify();
                 end;
@@ -167,10 +176,10 @@ page 60010 "Custom API Page"
                     Instr: InStream;
                     OutStr: OutStream;
                 begin
-                    Rec.CalcFields(blob);
-                    if Rec.blob.HasValue then begin
+                    Rec.CalcFields("Rich Text");
+                    if Rec."Rich Text".HasValue then begin
                         Message('My Blob filed has some value');
-                        Rec.blob.CreateInStream(Instr);
+                        Rec."Rich Text".CreateInStream(Instr);
                         tempblob.CreateOutStream(OutStr);
                         CopyStream(OutStr, Instr);
                         ExportBlob(tempblob, Rec.Name);
@@ -316,4 +325,12 @@ page 60010 "Custom API Page"
     begin
         filemanagement.BLOBExport(tblob, fieldname, true);
     end;
+
+    trigger OnAfterGetCurrRecord()
+    begin
+        RichText := Rec.GetRichText();
+    end;
+
+    var
+        RichText: Text;
 }
