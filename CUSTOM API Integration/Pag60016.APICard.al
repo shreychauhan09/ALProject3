@@ -23,6 +23,8 @@ page 60016 "API Card"
                 field(Name; Rec.Name)
                 {
                     ToolTip = 'Specifies the value of the Name field.';
+                    // InstructionalText = 'Please Enter the Customer Name.';
+                    // InstructionalTextML = 'Please Enter the Customer Name.';
                 }
                 field(Address; Rec.Address)
                 {
