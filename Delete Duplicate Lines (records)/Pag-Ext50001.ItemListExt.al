@@ -59,7 +59,7 @@ pageextension 50001 "Item List Ext" extends "Item List"
 
                 trigger OnAction()
                 begin
-                    Xmlport.Run(50100, true, false);
+                    Xmlport.Run(50101, true, false);
                 end;
             }
 
@@ -73,7 +73,7 @@ pageextension 50001 "Item List Ext" extends "Item List"
 
                 trigger OnAction()
                 begin
-                    Xmlport.Run(50101, false, true);
+                    Xmlport.Run(50102, false, true);
                 end;
             }
         }

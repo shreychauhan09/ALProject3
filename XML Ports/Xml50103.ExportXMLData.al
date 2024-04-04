@@ -4,14 +4,14 @@ xmlport 50103 ExportXMLData
     Format = VariableText;
     Direction = Export;
     TextEncoding = UTF8;
-    UseRequestPage = false;
-    TableSeparator = '';
-    RecordSeparator = '';
+    UseRequestPage = true;
     FieldSeparator = ',';
     FieldDelimiter = '"';
+    TableSeparator = '<NewLine>';
+    RecordSeparator = '<NewLine>';
     DefaultFieldsValidation = true;
     FormatEvaluate = Legacy;
-    // TransactionType = Update;
+    TransactionType = Report;
     schema
     {
         textelement(RootNodeName)
@@ -38,49 +38,56 @@ xmlport 50103 ExportXMLData
                 {
                     trigger OnBeforePassVariable()
                     begin
-                        // ItemTypeTitle := Item.FieldCaption(Type);
+                        ItemTypeTitle := XMLData.FieldCaption(Company);
                     end;
                 }
                 textelement(ItemInventoryTitle)
                 {
                     trigger OnBeforePassVariable()
                     begin
-                        // ItemInventoryTitle := Item.FieldCaption(Inventory);
+                        ItemInventoryTitle := XMLData.FieldCaption(FirstName);
                     end;
                 }
                 textelement(ItemBaseUnitofMeasureTitle)
                 {
                     trigger OnBeforePassVariable()
                     begin
-                        // ItemBaseUnitofMeasureTitle := Item.FieldCaption("Base Unit of Measure");
-                    end;
-                }
-                textelement(ItemBaseCostisAdjustedTitle)
-                {
-                    trigger OnBeforePassVariable()
-                    begin
-                        // ItemBaseCostisAdjustedTitle := Item.FieldCaption("Cost is Adjusted");
+                        ItemBaseUnitofMeasureTitle := XMLData.FieldCaption(LastName);
                     end;
                 }
                 textelement(ItemUnitCostTitle)
                 {
                     trigger OnBeforePassVariable()
                     begin
-                        // ItemUnitCostTitle := Item.FieldCaption("Unit Cost");
+                        ItemUnitCostTitle := XMLData.FieldCaption(Phone);
                     end;
                 }
                 textelement(ItemUnitPriceTitle)
                 {
                     trigger OnBeforePassVariable()
                     begin
-                        // ItemUnitPriceTitle := Item.FieldCaption("Unit Price");
+                        ItemUnitPriceTitle := XMLData.FieldCaption(RowID);
                     end;
                 }
                 textelement(ItemVendorNoTitle)
                 {
                     trigger OnBeforePassVariable()
                     begin
-                        // ItemVendorNoTitle := Item.FieldCaption("Vendor No.");
+                        ItemVendorNoTitle := XMLData.FieldCaption(State);
+                    end;
+                }
+                textelement(StreetName)
+                {
+                    trigger OnBeforePassVariable()
+                    begin
+                        StreetName := XMLData.FieldCaption(StreetName)
+                    end;
+                }
+                textelement(zip)
+                {
+                    trigger OnBeforePassVariable()
+                    begin
+                        zip := XMLData.FieldCaption(Zip)
                     end;
                 }
             }
@@ -112,27 +119,6 @@ xmlport 50103 ExportXMLData
                 {
                 }
                 fieldelement(StreetName; XMLData.StreetName)
-                {
-                }
-                fieldelement(StreetNumber; XMLData.StreetNumber)
-                {
-                }
-                fieldelement(Suffix; XMLData.Suffix)
-                {
-                }
-                fieldelement(SystemCreatedAt; XMLData.SystemCreatedAt)
-                {
-                }
-                fieldelement(SystemCreatedBy; XMLData.SystemCreatedBy)
-                {
-                }
-                fieldelement(SystemId; XMLData.SystemId)
-                {
-                }
-                fieldelement(SystemModifiedAt; XMLData.SystemModifiedAt)
-                {
-                }
-                fieldelement(SystemModifiedBy; XMLData.SystemModifiedBy)
                 {
                 }
                 fieldelement(Zip; XMLData.Zip)

@@ -105,12 +105,9 @@ page 50145 "XML Data View"
                 PromotedCategory = Process;
                 PromotedOnly = true;
                 trigger OnAction()
-                var
-                    Export: Codeunit "XML Data";
                 begin
-                    Export.Export();
+                    Xmlport.Run(50103, true, false);
                 end;
-
 
             }
         }
