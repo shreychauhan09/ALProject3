@@ -1,7 +1,13 @@
 /// <summary>
 /// Page API Card (ID 60016).
 /// </summary>
+#pragma warning disable AL0789
+using Microsoft.Foundation.attachment;
+using Microsoft.Sales.Document;
+#pragma warning restore AL0789
+#pragma warning disable AL0679
 page 60016 "API Card"
+#pragma warning restore AL0679
 {
     ApplicationArea = All;
     Caption = 'API Card';
@@ -56,7 +62,15 @@ page 60016 "API Card"
                 ApplicationArea = All;
                 SubPageLink = "Document No." = field("No.");
                 UpdatePropagation = Both;
-
+            }
+        }
+        area(FactBoxes)
+        {
+            part("Attached Documents"; "Document Attachment Factbox")
+            {
+                ApplicationArea = All;
+                Caption = 'Attachments';
+                SubPageLink = "Table ID" = const(Database::"Custom API Table"), "No." = field(Code);
             }
         }
     }
@@ -165,10 +179,30 @@ page 60016 "API Card"
                 //     end;
                 // end;
             }
+            action(AttachAsPDF)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Attach as PDF';
+                Ellipsis = true;
+                Image = PrintAttachment;
+                ToolTip = 'Create a PDF file and attach it to the document.';
+
+                trigger OnAction()
+                var
+                    APITAble: Record "Custom API Table";
+                    DocPrint: Codeunit "Document-Print";
+                    SalesHeader: Record "Sales Header";
+                begin
+                    APITAble := Rec;
+                    APITAble.SetRecFilter();
+                    DocPrint.PrintSalesOrderToDocumentAttachment(SalesHeader, DocPrint.GetSalesOrderPrintToAttachmentOption(SalesHeader));
+                end;
+            }
         }
     }
     trigger OnNextRecord(Steps: Integer): Integer
     begin
         Error('You Can''t go to Next/Previous Record');
     end;
+
 }
