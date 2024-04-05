@@ -1,7 +1,19 @@
+entitlement BC_Role_Delegated
+{
+    Type = PerUserServicePlan;
+    // RoleType = Delegated;
+    Id = '1a2aaaaa-3aa4-5aa6-789a-a1234567aaaa';
+    // ObjectEntitlements = "D365 BASIC";
+
+}
+
+#pragma warning disable AL0679
 table 50145 "XML Data"
+#pragma warning restore AL0679
 {
     Caption = 'XML Data';
     DataClassification = ToBeClassified;
+    Permissions = tabledata "XML Data" = RD;
 
     fields
     {
@@ -73,5 +85,4 @@ table 50145 "XML Data"
             Clustered = true;
         }
     }
-
 }
