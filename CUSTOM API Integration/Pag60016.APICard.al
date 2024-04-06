@@ -189,13 +189,14 @@ page 60016 "API Card"
 
                 trigger OnAction()
                 var
-                    APITAble: Record "Custom API Table";
-                    DocPrint: Codeunit "Document-Print";
+                    ReportSelections: Record "Report Selections";
+                    Usage: Enum "Report Selection Usage";
                     SalesHeader: Record "Sales Header";
                 begin
-                    APITAble := Rec;
-                    APITAble.SetRecFilter();
-                    DocPrint.PrintSalesOrderToDocumentAttachment(SalesHeader, DocPrint.GetSalesOrderPrintToAttachmentOption(SalesHeader));
+                    SalesHeader := SalesHeader;
+                    SalesHeader.SetRecFilter();
+                    ReportSelections.SaveAsDocumentAttachment(
+                                Usage::"S.Order".AsInteger(), SalesHeader, SalesHeader."No.", SalesHeader.GetBillToNo(), false);
                 end;
             }
         }
@@ -204,5 +205,4 @@ page 60016 "API Card"
     begin
         Error('You Can''t go to Next/Previous Record');
     end;
-
 }

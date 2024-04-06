@@ -2,8 +2,21 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "snapshotInitialize: Your own server",
+            "type": "al",
+            "request": "snapshotInitialize",
+            "environmentType": "OnPrem",
+            "server": "http://DESKTOP-IV1KDP1:8080/BC230/Webclient/",
+            "serverInstance": "BC230",
+            "authentication": "Windows",
+            "breakOnNext": "WebClient",
+            "executionContext": "DebugAndProfile",
+            "sessionId": -1
+        },
+        {
             "name": "Your own server",
             "request": "launch",
+            // "request": "attach",
             "type": "al",
             "environmentType": "OnPrem",
             "server": " http://DESKTOP-IV1KDP1:8080/BC230/Webclient/",
@@ -19,7 +32,11 @@
             "usePublicURLFromServer": true,
             "port": 7049,
             "debugServer": 4711,
+            "breakOnRecordWrite": "All",
+            "startupCompany": "CRONUS India Ltd.",
             // "schemaUpdateMode": "ForceSync"
+            "longRunningSqlStatementsThreshold": 500,
+            // "breakOnNext": "WebClient"
         }
     ]
 }
