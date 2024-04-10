@@ -32,6 +32,10 @@ page 60016 "API Card"
                     // InstructionalText = 'Please Enter the Customer Name.';
                     // InstructionalTextML = 'Please Enter the Customer Name.';
                 }
+                field("Word Count"; Rec."Word Count")
+                {
+                    ApplicationArea = All;
+                }
                 field(Address; Rec.Address)
                 {
                     ToolTip = 'Specifies the value of the Address field.';
@@ -90,6 +94,19 @@ page 60016 "API Card"
                     Rec.Modify(true);
                 end;
             }
+            // action("Word Count")
+            // {
+            //     ApplicationArea = All;
+            //     trigger OnAction()
+            //     var
+            //         Length: Integer;
+            //         MaxLength: Integer;
+            //     begin
+            //         Length := StrLen(Rec.Name);
+            //         MaxLength := MaxStrLen(Rec.Name);
+            //         Message('%1 / %2', Length, MaxLength);
+            //     end;
+            // }
             action("Export Json File")
             {
                 Image = Export;

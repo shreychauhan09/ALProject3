@@ -15,6 +15,16 @@ table 60009 "Custom API Table"
         field(2; Name; Text[100])
         {
             Caption = 'Name';
+            trigger OnValidate()
+            var
+                Length: Integer;
+                MaxLength: Integer;
+            begin
+                Length := StrLen(Rec.Name);
+                MaxLength := MaxStrLen(Rec.Name);
+                // Message('%1 / %2', Length, MaxLength);
+                "Word Count" := Format(Length) + '/' + Format(MaxLength);
+            end;
         }
         field(3; "Contact No."; Text[10])
         {
@@ -76,6 +86,10 @@ table 60009 "Custom API Table"
         {
             DataClassification = ToBeClassified;
             Description = 'Contains a rich text value';
+        }
+        field(15; "Word Count"; Text[250])
+        {
+            DataClassification = ToBeClassified;
         }
     }
     keys
