@@ -35,7 +35,7 @@
             "breakOnRecordWrite": "All",
             "startupCompany": "CRONUS India Ltd.",
             // "schemaUpdateMode": "ForceSync"
-            "longRunningSqlStatementsThreshold": 500,
+            // "longRunningSqlStatementsThreshold": 500,
             // "breakOnNext": "WebClient"
         }
     ]
