@@ -219,8 +219,8 @@ page 60010 "Custom API Page"
         // HttpClient.UseDefaultNetworkWindowsAuthentication()
         Content.GetHeaders(contentHeaders);
         RequestMessage.GetHeaders(RequestHeaders);
-        RequestHeaders.Add('Username', 'DESKTOP-IV1KDP1\ADMIN');
-        RequestHeaders.Add('Password', '2962');
+        // RequestHeaders.Add('Username', 'DESKTOP-IV1KDP1\ADMIN');
+        // RequestHeaders.Add('Password', '2962');
 
         // RequestHeaders.Add('Authorization', 'Basic ' + Convert.ToBase64('DESKTOP-IV1KDP1\ADMIN' + ':' + '2962'));
 
@@ -230,7 +230,9 @@ page 60010 "Custom API Page"
         // RequestHeaders.Add('OData-Version', '4.0');
         // RequestHeaders.Add('Access-Control-Allow-Credentials', 'true');
         // RequestMessage.SetRequestUri(Rec."API URL");
-        RequestMessage.SetRequestUri('http://desktop-iv1kdp1:7048/BC220/ODataV4/Company(''CRONUS%20India%20Ltd.'')/CustomAPI');
+        if ContentHeaders.Contains('Content-Type') then ContentHeaders.Remove('Content-Type');
+        ContentHeaders.Add('Content-Type', 'application/json');
+        RequestMessage.SetRequestUri('http://desktop-iv1kdp1:7048/BC240/ODataV4/Company(''CRONUS%20India%20Ltd.'')/CustomApiPage');
         RequestMessage.Method('GET');
         // IsSuccessful := HttpClient.Get('http://desktop-iv1kdp1:7048/BC220/ODataV4/Company(''CRONUS%20India%20Ltd.'')/CustomAPI', ResponseMessage);
         IsSuccessful := HttpClient.Send(RequestMessage, ResponseMessage);
