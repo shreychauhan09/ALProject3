@@ -11,6 +11,12 @@ pageextension 50000 "Customer List Ext" extends "Customer List"
             {
                 ApplicationArea = All;
             }
+            field(Facebook; Rec.Facebook)
+            {
+                Caption = 'Facebook';
+                ApplicationArea = SocialMedia;
+            }
+
         }
     }
     actions
@@ -110,5 +116,13 @@ pageextension 50000 "Customer List Ext" extends "Customer List"
         DefaultView := '&view=' + ViewID;
         URL := GetUrl(CurrentClientType, CompanyName, ObjectType::Page, PageID) + DefaultView;
         Hyperlink(URL);
+    end;
+
+    trigger OnOpenPage()
+    var
+        EnableSocialExtension: Codeunit "Enable Social Media Extension";
+    begin
+        if EnableSocialExtension.IsSocialApplicationAreaEnabled() then
+            Message('App published: Social Extension');
     end;
 }

@@ -11,5 +11,10 @@ tableextension 50000 "Customer Tab Ext" extends Customer
             DataClassification = ToBeClassified;
             Subtype = Bitmap;
         }
+        field(50100; Facebook; Text[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Facebook';
+        }
     }
 }
