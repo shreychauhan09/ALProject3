@@ -106,6 +106,20 @@ pageextension 50000 "Customer List Ext" extends "Customer List"
                 end;
             }
         }
+        addafter(ApprovalEntries)
+        {
+            action("Open Social Media")
+            {
+                ApplicationArea = All;
+                Caption = 'Open Social Media';
+                Image = Information;
+                trigger OnAction();
+                begin
+                    // Call your codeunit here
+                    // Codeunit.Run(Codeunit::"Open Social Media");
+                end;
+            }
+        }
     }
 
     local procedure OpenSpecifiedView(ViewID: Text; PageID: Integer)

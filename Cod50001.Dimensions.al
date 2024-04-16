@@ -11,9 +11,13 @@ codeunit 50001 "Update Location Dimensions"
     begin
         Location.GET(ItemJournalLine."Location Code");
         ItemJournalLine.Validate("Location Code", Location.Code);
-
+        // if TransferLine."Direct Transfer" = false then begin
         Location.GET(ItemJournalLine."New Location Code");
         ItemJournalLine.Validate("New Location Code", Location.Code);
+        // end else begin
+        //     Location.GET(ItemJournalLine."Location Code");
+        //     ItemJournalLine.Validate("Location Code", Location.Code);
+        // end;
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Receipt", OnBeforePostItemJournalLine, '', false, false)]
