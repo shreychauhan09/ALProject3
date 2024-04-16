@@ -8,15 +8,17 @@ codeunit 50001 "Update Location Dimensions"
         Location: Record Location;
         DefaultDim: Record "Default Dimension";
         GLSetup: Record "General Ledger Setup";
+        DimMgt: Codeunit DimensionManagement;
     begin
         Location.GET(ItemJournalLine."Location Code");
         ItemJournalLine.Validate("Location Code", Location.Code);
-        // if TransferLine."Direct Transfer" = false then begin
+        // TransferLine.Validate("Transfer-from Code");
+
+        // if not TransferLine."Direct Transfer" then begin
+        // TransferLine.Validate("Transfer-to Code");
         Location.GET(ItemJournalLine."New Location Code");
         ItemJournalLine.Validate("New Location Code", Location.Code);
-        // end else begin
-        //     Location.GET(ItemJournalLine."Location Code");
-        //     ItemJournalLine.Validate("Location Code", Location.Code);
+        // TransferLine.Validate("Transfer-to Code");
         // end;
     end;
 
@@ -27,8 +29,27 @@ codeunit 50001 "Update Location Dimensions"
     begin
         Location.Get(ItemJournalLine."Location Code");
         ItemJournalLine.Validate("Location Code", Location.Code);
+        // TransferLine.Validate("Transfer-to Code");
 
+        // if not TransferLine."Direct Transfer" then begin
+        // TransferLine.Validate("Transfer-from Code");
         Location.Get(ItemJournalLine."New Location Code");
         ItemJournalLine.Validate("New Location Code", Location.Code);
+
+        // End;
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Transfer", OnAfterCreateItemJnlLine, '', false, false)]
+    local procedure "TransferOrder-Post Transfer_OnAfterCreateItemJnlLine"(var ItemJnlLine: Record "Item Journal Line"; TransLine: Record "Transfer Line"; DirectTransHeader: Record "Direct Trans. Header"; DirectTransLine: Record "Direct Trans. Line")
+    var
+        Location: Record Location;
+    begin
+        Location.GET(ItemJnlLine."Location Code");
+        ItemJnlLine.Validate("Location Code", Location.Code);
+
+        Location.GET(ItemJnlLine."New Location Code");
+        ItemJnlLine.Validate("New Location Code", Location.Code);
+        Message('Test');
+    end;
+
 }
