@@ -1,18 +1,18 @@
 {
     "version": "0.2.0",
     "configurations": [
-        {
-            "name": "snapshotInitialize: Your own server",
-            "type": "al",
-            "request": "snapshotInitialize",
-            "environmentType": "OnPrem",
-            "server": "http://DESKTOP-IV1KDP1:8080/BC240/Webclient/",
-            "serverInstance": "BC240",
-            "authentication": "Windows",
-            "breakOnNext": "WebClient",
-            "executionContext": "DebugAndProfile",
-            "sessionId": -1
-        },
+        // {
+        //     "name": "snapshotInitialize: Your own server",
+        //     "type": "al",
+        //     "request": "snapshotInitialize",
+        //     "environmentType": "OnPrem",
+        //     "server": "http://DESKTOP-IV1KDP1:8080/BC240/Webclient/",
+        //     "serverInstance": "BC240",
+        //     "authentication": "Windows",
+        //     "breakOnNext": "WebClient",
+        //     "executionContext": "DebugAndProfile",
+        //     "sessionId": -1
+        // },
         {
             "name": "Your own server",
             "request": "launch",
