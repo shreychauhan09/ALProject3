@@ -2,6 +2,9 @@
 codeunit 50001 "Update Location Dimensions"
 #pragma warning restore AL0679
 {
+    var
+        SingleInstance: Codeunit "Single Insatnce";
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Shipment", OnAfterCreateItemJnlLine, '', false, false)]
     local procedure "TransferOrder-Post Shipment_OnAfterCreateItemJnlLine"(var ItemJournalLine: Record "Item Journal Line"; TransferLine: Record "Transfer Line"; TransferShipmentHeader: Record "Transfer Shipment Header"; TransferShipmentLine: Record "Transfer Shipment Line")
     var
@@ -11,6 +14,7 @@ codeunit 50001 "Update Location Dimensions"
         DimMgt: Codeunit DimensionManagement;
         Dim_SetID: Integer;
     begin
+        SingleInstance.GetGetReceiptLinesBatch();
         // if not TransferLine."Direct Transfer" then begin
         Location.GET(ItemJournalLine."Location Code");
         ItemJournalLine.Validate("Location Code", Location.Code);
