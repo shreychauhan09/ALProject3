@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="BOMCostSharesReportCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>BOMCostSharesReportCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>BOMCostSharesReportCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="TypeCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>TypeCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>TypeCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="QtyPerTopItemCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>QtyPerTopItemCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>QtyPerTopItemCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="UnitPriceCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>UnitPriceCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>UnitPriceCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="UnitCostCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>UnitCostCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>UnitCostCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DirectCostCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>DirectCostCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>DirectCostCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="IndirectCostCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>IndirectCostCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>IndirectCostCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="MaterialCostCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>MaterialCostCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>MaterialCostCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CapacityCostCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CapacityCostCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CapacityCostCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SubcontrdCostCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>SubcontrdCostCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>SubcontrdCostCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CapOvhdCostCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CapOvhdCostCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CapOvhdCostCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="MfgOvhdCostCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>MfgOvhdCostCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>MfgOvhdCostCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CostDistributionByMaterialLaborCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CostDistributionByMaterialLaborCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CostDistributionByMaterialLaborCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CostDistributionByDirectIndirectCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CostDistributionByDirectIndirectCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CostDistributionByDirectIndirectCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CostDistributionByCostSharesCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CostDistributionByCostSharesCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CostDistributionByCostSharesCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="TotalCostCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>TotalCostCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>TotalCostCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="MaterialCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>MaterialCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>MaterialCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LaborCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LaborCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LaborCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="OverheadCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>OverheadCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>OverheadCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ItemNoCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ItemNoCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ItemNoCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ItemDescriptionCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ItemDescriptionCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ItemDescriptionCaption</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="COMPANYNAME">
+          <DataField>COMPANYNAME</DataField>
+        </Field>
+        <Field Name="UserWorkDate">
+          <DataField>UserWorkDate</DataField>
+        </Field>
+        <Field Name="ItemNo">
+          <DataField>ItemNo</DataField>
+        </Field>
+        <Field Name="ItemDescription">
+          <DataField>ItemDescription</DataField>
+        </Field>
+        <Field Name="TypeNo">
+          <DataField>TypeNo</DataField>
+        </Field>
+        <Field Name="Type">
+          <DataField>Type</DataField>
+        </Field>
+        <Field Name="No">
+          <DataField>No</DataField>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="Indentation">
+          <DataField>Indentation</DataField>
+        </Field>
+        <Field Name="DirectCost">
+          <DataField>DirectCost</DataField>
+        </Field>
+        <Field Name="DirectCostFormat">
+          <DataField>DirectCostFormat</DataField>
+        </Field>
+        <Field Name="IndirectCost">
+          <DataField>IndirectCost</DataField>
+        </Field>
+        <Field Name="IndirectCostFormat">
+          <DataField>IndirectCostFormat</DataField>
+        </Field>
+        <Field Name="MaterialCost">
+          <DataField>MaterialCost</DataField>
+        </Field>
+        <Field Name="MaterialCostFormat">
+          <DataField>MaterialCostFormat</DataField>
+        </Field>
+        <Field Name="CapacityCost">
+          <DataField>CapacityCost</DataField>
+        </Field>
+        <Field Name="CapacityCostFormat">
+          <DataField>CapacityCostFormat</DataField>
+        </Field>
+        <Field Name="SubcontrdCost">
+          <DataField>SubcontrdCost</DataField>
+        </Field>
+        <Field Name="SubcontrdCostFormat">
+          <DataField>SubcontrdCostFormat</DataField>
+        </Field>
+        <Field Name="CapOvhdCost">
+          <DataField>CapOvhdCost</DataField>
+        </Field>
+        <Field Name="CapOvhdCostFormat">
+          <DataField>CapOvhdCostFormat</DataField>
+        </Field>
+        <Field Name="MfgOvhdCost">
+          <DataField>MfgOvhdCost</DataField>
+        </Field>
+        <Field Name="MfgOvhdCostFormat">
+          <DataField>MfgOvhdCostFormat</DataField>
+        </Field>
+        <Field Name="TotalCost">
+          <DataField>TotalCost</DataField>
+        </Field>
+        <Field Name="TotalCostFormat">
+          <DataField>TotalCostFormat</DataField>
+        </Field>
+        <Field Name="Inventory_Posting_Group">
+          <DataField>Inventory_Posting_Group</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>
