@@ -14,7 +14,7 @@ codeunit 50001 "Update Location Dimensions"
         DimMgt: Codeunit DimensionManagement;
         Dim_SetID: Integer;
     begin
-        SingleInstance.GetGetReceiptLinesBatch();
+        // SingleInstance.GetGetReceiptLinesBatch();
         // if not TransferLine."Direct Transfer" then begin
         Location.GET(ItemJournalLine."Location Code");
         ItemJournalLine.Validate("Location Code", Location.Code);
@@ -25,8 +25,8 @@ codeunit 50001 "Update Location Dimensions"
         // TransferLine.Validate("Transfer-to Code");
         // if not TransferLine."Direct Transfer" then begin
 
-        ItemJournalLine.Validate("New Location Code", 'TRANSIT');
-        Dim_SetID := ItemJournalLine."New Dimension Set ID";
+        // ItemJournalLine.Validate("New Location Code", 'TRANSIT');
+        // Dim_SetID := ItemJournalLine."New Dimension Set ID";
         Location.GET(ItemJournalLine."New Location Code");
         ItemJournalLine.Validate("New Location Code", Location.Code);
 
