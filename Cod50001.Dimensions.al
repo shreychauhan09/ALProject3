@@ -74,4 +74,15 @@ codeunit 50001 "Update Location Dimensions"
     begin
     end;
 
+    [EventSubscriber(ObjectType::Report, Report::"Standard Sales - Pro Forma Inv", OnAfterLineOnPreDataItem, '', false, false)]
+    local procedure PFInvOnAfterLineOnPreDataItem(var SalesLine: Record "Sales Line")
+    begin
+        SalesLine.SetRange(Type);
+    end;
+
+    [EventSubscriber(ObjectType::Report, Report::"Standard Sales - Pro Forma Inv", OnBeforeGetItemForRec, '', false, false)]
+    local procedure PFInvOnBeforeGetItemForRec(var IsHandled: Boolean)
+    begin
+        IsHandled := true;
+    end;
 }
