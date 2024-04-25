@@ -219,8 +219,8 @@ page 60010 "Custom API Page"
         // HttpClient.UseDefaultNetworkWindowsAuthentication()
         Content.GetHeaders(contentHeaders);
         RequestMessage.GetHeaders(RequestHeaders);
-        // RequestHeaders.Add('Username', 'DESKTOP-IV1KDP1\ADMIN');
-        // RequestHeaders.Add('Password', '2962');
+        RequestHeaders.Add('Username', 'DESKTOP-IV1KDP1\ADMIN');
+        RequestHeaders.Add('Password', '2962');
 
         // RequestHeaders.Add('Authorization', 'Basic ' + Convert.ToBase64('DESKTOP-IV1KDP1\ADMIN' + ':' + '2962'));
 
