@@ -217,7 +217,11 @@ page 60010 "Custom API Page"
         // RequestHeaders.Add('Authorization', StrSubstNo('NTLM %1:%2', 'DESKTOP-IV1KDP1\ADMIN', '2962'));
         // HttpClient.UseWindowsAuthentication('DESKTOP-IV1KDP1\ADMIN', '2962');
         // HttpClient.UseDefaultNetworkWindowsAuthentication()
-        Content.GetHeaders(contentHeaders);
+        // Content.GetHeaders(contentHeaders);
+        // Clear(RequestHeaders);
+        // Clear(RequestMessage);
+        // Clear(ContentHeaders);
+        // Clear(Content);
         RequestMessage.GetHeaders(RequestHeaders);
         RequestHeaders.Add('Username', 'DESKTOP-IV1KDP1\ADMIN');
         RequestHeaders.Add('Password', '2962');
@@ -230,20 +234,21 @@ page 60010 "Custom API Page"
         // RequestHeaders.Add('OData-Version', '4.0');
         // RequestHeaders.Add('Access-Control-Allow-Credentials', 'true');
         // RequestMessage.SetRequestUri(Rec."API URL");
-        if ContentHeaders.Contains('Content-Type') then ContentHeaders.Remove('Content-Type');
-        ContentHeaders.Add('Content-Type', 'application/json');
+        // if ContentHeaders.Contains('Content-Type') then ContentHeaders.Remove('Content-Type');
+        // ContentHeaders.Add('Content-Type', 'application/json');
+
         RequestMessage.SetRequestUri('http://desktop-iv1kdp1:7048/BC240/ODataV4/Company(''CRONUS%20India%20Ltd.'')/CustomApiPage');
         RequestMessage.Method('GET');
         // IsSuccessful := HttpClient.Get('http://desktop-iv1kdp1:7048/BC220/ODataV4/Company(''CRONUS%20India%20Ltd.'')/CustomAPI', ResponseMessage);
         IsSuccessful := HttpClient.Send(RequestMessage, ResponseMessage);
         Error('Status Code: %1\ Reason : %2', ResponseMessage.HttpStatusCode, ResponseMessage.ReasonPhrase);
-        if not IsSuccessful then
-            Error('Status Code: %1\ Reason : %2', ResponseMessage.HttpStatusCode, ResponseMessage.ReasonPhrase)
-        else begin
-            ResponseMessage.Content.ReadAs(ResponseText);
-            JObject.ReadFrom(ResponseText);
-            Message(ResponseText);
-        end;
+        // if not IsSuccessful then
+        //     Error('Status Code: %1\ Reason : %2', ResponseMessage.HttpStatusCode, ResponseMessage.ReasonPhrase)
+        // else begin
+        ResponseMessage.Content.ReadAs(ResponseText);
+        JObject.ReadFrom(ResponseText);
+        //     Message(ResponseText);
+        // end;
 
     end;
 
