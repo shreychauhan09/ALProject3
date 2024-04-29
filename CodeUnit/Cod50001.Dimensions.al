@@ -2,8 +2,8 @@
 codeunit 50001 "Update Location Dimensions"
 #pragma warning restore AL0679
 {
-    var
-        SingleInstance: Codeunit "Single Insatnce";
+    // var
+    //     SingleInstance: Codeunit "Single Insatnce";
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Shipment", OnAfterCreateItemJnlLine, '', false, false)]
     local procedure "TransferOrder-Post Shipment_OnAfterCreateItemJnlLine"(var ItemJournalLine: Record "Item Journal Line"; TransferLine: Record "Transfer Line"; TransferShipmentHeader: Record "Transfer Shipment Header"; TransferShipmentLine: Record "Transfer Shipment Line")
@@ -32,6 +32,9 @@ codeunit 50001 "Update Location Dimensions"
 
         //     Message('Test 2');
         //     // TransferLine.Validate("Transfer-to Code");
+        // end else begin
+        //     Location.Get(TransferLine."Transfer-to Code");
+        //     ItemJournalLine.Validate("Location Code", Location.Code);
         // end;
     end;
 
@@ -53,21 +56,24 @@ codeunit 50001 "Update Location Dimensions"
         Location.Get(ItemJournalLine."New Location Code");
         ItemJournalLine.Validate("New Location Code", Location.Code);
         //     Message('Test 4');
-        // End;
+        // End else begin
+        //     Location.Get(TransferLine."Transfer-to Code");
+        //     ItemJournalLine.Validate("New Location Code", Location.Code);
+        // end;
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Transfer", OnAfterCreateItemJnlLine, '', false, false)]
-    local procedure "TransferOrder-Post Transfer_OnAfterCreateItemJnlLine"(var ItemJnlLine: Record "Item Journal Line"; TransLine: Record "Transfer Line"; DirectTransHeader: Record "Direct Trans. Header"; DirectTransLine: Record "Direct Trans. Line")
-    var
-        Location: Record Location;
-    begin
-        // Location.GET(ItemJnlLine."Location Code");
-        // ItemJnlLine.Validate("Location Code", Location.Code);
+    // // [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Transfer", OnAfterCreateItemJnlLine, '', false, false)]
+    // // local procedure "TransferOrder-Post Transfer_OnAfterCreateItemJnlLine"(var ItemJnlLine: Record "Item Journal Line"; TransLine: Record "Transfer Line"; DirectTransHeader: Record "Direct Trans. Header"; DirectTransLine: Record "Direct Trans. Line")
+    // // var
+    // //     Location: Record Location;
+    // // begin
+    // //     // Location.GET(ItemJnlLine."Location Code");
+    // //     // ItemJnlLine.Validate("Location Code", Location.Code);
 
-        // Location.GET(ItemJnlLine."New Location Code");
-        // ItemJnlLine.Validate("New Location Code", Location.Code);
-        // Message('Test');
-    end;
+    // //     // Location.GET(ItemJnlLine."New Location Code");
+    // //     // ItemJnlLine.Validate("New Location Code", Location.Code);
+    // //     // Message('Test');
+    // // end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"TransferOrder-Post Shipment", OnBeforeOnRun, '', false, false)]
     local procedure "TransferOrder-Post Shipment_OnBeforeOnRun"(var TransferHeader: Record "Transfer Header"; var HideValidationDialog: Boolean; var SuppressCommit: Boolean; var IsHandled: Boolean)
@@ -78,6 +84,7 @@ codeunit 50001 "Update Location Dimensions"
         NewSetEntryRequired: Boolean;
         GenLedSetup: Record "General Ledger Setup";
         TransLine: Record "Transfer Line";
+        ItemJnlLine: Record "Item Journal Line";
     begin
         GenLedSetup.Get();
         Location.Get(TransferHeader."Transfer-From Code");
@@ -89,19 +96,25 @@ codeunit 50001 "Update Location Dimensions"
                 DimSetEntry.SetRange("Dimension Code", DefaultDim."Dimension Code");
                 if DimSetEntry.FindFirst() then begin
                     if (DefaultDim."Value Posting" = DefaultDim."Value Posting"::"Same Code") AND (DefaultDim."Dimension Value Code" <> DimSetEntry."Dimension Value Code") then begin
-                        if GenLedSetup."Global Dimension 1 Code" = DefaultDim."Dimension Code" then begin
-                            TransferHeader.SetHideValidationDialog(True);
-                            TransferHeader.Validate("Shortcut Dimension 1 Code", DefaultDim."Dimension Value Code");
-                            TransferHeader.Modify();
-                        end;
-                        if GenLedSetup."Global Dimension 2 Code" = DefaultDim."Dimension Code" then begin
-                            TransferHeader.SetHideValidationDialog(True);
-                            TransferHeader.Validate("Shortcut Dimension 2 Code", DefaultDim."Dimension Value Code");
-                            TransferHeader.Modify();
-                            // TransLine.SetRange("Document No.", TransferHeader."No.");
-                            // if TransLine.FindSet() then
-                            //     TransLine.ModifyAll("Shortcut Dimension 2 Code", TransferHeader."Shortcut Dimension 2 Code");
-                        end;
+                        // if GenLedSetup."Global Dimension 1 Code" = DefaultDim."Dimension Code" then begin
+                        TransferHeader.SetHideValidationDialog(True);
+                        TransferHeader.Validate("Shortcut Dimension 1 Code", DefaultDim."Dimension Value Code");
+                        TransferHeader.Modify();
+                        // Location.Get(TransferHeader."Transfer-from Code");
+                        // ItemJnlLine.Reset();
+                        // ItemJnlLine.Validate("Location Code", Location.Code);
+                        // end;
+                        // if GenLedSetup."Global Dimension 2 Code" = DefaultDim."Dimension Code" then begin
+                        TransferHeader.SetHideValidationDialog(True);
+                        TransferHeader.Validate("Shortcut Dimension 2 Code", DefaultDim."Dimension Value Code");
+                        TransferHeader.Modify();
+                        // Location.Get(TransferHeader."Transfer-from Code");
+                        // ItemJnlLine.Reset();
+                        // ItemJnlLine.Validate("Location Code", Location.Code);
+                        // TransLine.SetRange("Document No.", TransferHeader."No.");
+                        // if TransLine.FindSet() then
+                        //     TransLine.ModifyAll("Shortcut Dimension 2 Code", TransferHeader."Shortcut Dimension 2 Code");
+                        // end;
                     end;// else
                         // NewSetEntryRequired := true;
                 end;// else
