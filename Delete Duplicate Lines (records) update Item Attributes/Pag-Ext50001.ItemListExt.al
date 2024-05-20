@@ -17,6 +17,35 @@ pageextension 50001 "Item List Ext" extends "Item List"
     {
         addafter(CopyItem)
         {
+            action(BulkEditAttrubute)
+            {
+                Caption = 'Bulk Edit Attributes';
+                Image = Edit;
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    Item: Record Item;
+                    ItemAttributesValueList: Page "Item Attributes Value List";
+                    SelectionFilterManagement: Codeunit SelectionFilterManagement;
+                    RecRef: RecordRef;
+                begin
+                    Item.Reset();
+                    CurrPage.SetSelectionFilter(Item);
+                    RecRef.GetTable(Item);
+                    ItemAttributesValueList.GetSelectionFilter(SelectionFilterManagement.GetSelectionFilter(RecRef, Item.FieldNo("No.")));
+                    ItemAttributesValueList.RunModal();
+                    CurrPage.ItemAttributesFactBox.PAGE.LoadItemAttributesData(Rec."No.");
+                end;
+
+            }
+        }
+
+        addafter(CopyItem)
+        {
             action("Update Picture Thumbnails")
             {
                 Promoted = true;
