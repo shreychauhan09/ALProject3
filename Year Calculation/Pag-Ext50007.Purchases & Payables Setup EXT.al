@@ -25,21 +25,83 @@ pageextension 50007 "Purchases & Payables Setup EXT" extends "Purchases & Payabl
                     intval: Integer;
                     MYName: Text;
                     Year: Integer;
+                    ChangedDate: Date;
+                    Month: Integer;
+                    Day: Integer;
                 begin
                     Evaluate(intval, DelChr(Format(Rec.Year), '=', 'Y,M,D'));
                     MYName := DelChr(Format(Rec.Year), '=', Format(intval));
                     if MYName = 'Y' then begin
                         Year := Date2DMY(Today, 3);
                         Year += intval;
-                        Message('%1 Years', Year);
+                        Evaluate(ChangedDate, Format((DMY2Date(Date2DMY(Today, 1), Date2DMY(Today, 2), Year))));
+                        Message('%1', ChangedDate);
                     end else if MYName = 'M' then begin
-                        Year := Date2DMY(Today, 2);
-                        Year += intval;
-                        Message('%1 Months', Year);
+                        // Year := Date2DMY(Today, 2);
+                        // Year += intval;
+                        // Evaluate(ChangedDate, Format((DMY2Date(Date2DMY(Today, 1), Year, Date2DMY(Today, 3)))));
+                        // Message('%1', Format(ChangedDate, 0, '<Day,2> / <Month Text> / <Year>'));
+                        // Month := Date2DMY(Today, 2);
+                        // Month += intval;
+                        // if Month > 12 then begin
+                        //     Year := Date2DMY(Today, 3);
+                        //     Year += Month div 12;
+                        //     Month := Month mod 12;
+                        //     if Month = 0 then begin
+                        //         Month := 12;
+                        //         Year -= 1;
+                        //     end;
+                        // end;
+                        // ChangedDate := AddMonths(Today, intval);
+                        Month := Date2DMY(Today, 2) + intval;
+                        Year := Date2DMY(Today, 3);
+                        while Month > 12 do begin
+                            Month -= 12;
+                            Year += 1;
+                        end;
+                        while Month < 1 do begin
+                            Month += 12;
+                            Year -= 1;
+                        end;
+                        ChangedDate := DMY2Date(Date2DMY(Today, 1), Month, Year);
+                        Message('%1', Format(ChangedDate, 0, '<Day,2> / <Month Text> / <Year>'));
                     end else begin
-                        Year := Date2DMY(Today, 1);
-                        Year += intval;
-                        Message('%1 Days', Year);
+                        // Year := Date2DMY(Today, 1);
+                        // Year += intval;
+                        // Day := Date2DMY(Today, 1);
+                        // Day += intval;
+                        // ChangedDate := IncDay(Today, Day);                        
+                        // Evaluate(ChangedDate, Format((DMY2Date(Year, Date2DMY(Today, 2), Date2DMY(Today, 3)))));
+                        // Message('%1', ChangedDate);
+                        // Day := Date2DMY(Today, 1) + intval;
+                        // Month := Date2DMY(Today, 2);
+                        // Year := Date2DMY(Today, 3);
+                        // while Day > 28 do begin
+                        //     if (Month = 2) and ((Year mod 4 = 0) and ((Year mod 100 <> 0) or (Year mod 400 = 0))) then begin
+                        //         if Day > 29 then begin
+                        //             Day -= 29;
+                        //             Month += 1;
+                        //         end;
+                        //     end else if ((Month = 4) or (Month = 6) or (Month = 9) or (Month = 11)) and (Day > 30) then begin
+                        //         Day -= 30;
+                        //         Month += 1;
+                        //     end else if Day > 31 then begin
+                        //         Day -= 31;
+                        //         Month += 1;
+                        //     end;
+                        //     while Month > 12 do begin
+                        //         Month -= 12;
+                        //         Year += 1;
+                        //     end;
+                        //     while Month < 1 do begin
+                        //         Month += 12;
+                        //         Year -= 1;
+                        //     end;
+                        // end;
+                        // ChangedDate := DMY2Date(Day, Month, Year);
+                        // Message('%1', Format(ChangedDate));
+                        ChangedDate := CalcDate('<-' + Format(Abs(intval)) + 'D', Today);
+                        Message('%1', Format(ChangedDate));
                     end;
                     Evaluate(intval, DelChr(Format(Rec.Year), '=', 'Y,M'));
                     MYName := DelChr(Format(Rec.Year), '=', Format(intval));
