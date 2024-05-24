@@ -4,6 +4,7 @@
 #pragma warning disable AL0789
 using Microsoft.Foundation.attachment;
 using Microsoft.Sales.Customer;
+using Microsoft.Inventory.Tracking;
 using Microsoft.Sales.Document;
 #pragma warning restore AL0789
 #pragma warning disable AL0679
@@ -61,6 +62,10 @@ page 60016 "API Card"
                 {
                     ToolTip = 'Specifies the value of the SystemId field.';
                 }
+                field(Code; Rec.Code)
+                {
+                    ApplicationArea = All;
+                }
             }
             part(custom; "Custom page Line")
             {
@@ -103,12 +108,20 @@ page 60016 "API Card"
                 var
                     custtab: Record Customer;
                     custlist: Page "Customer List";
+                    Reser: Record "Reservation Entry";
+                    ReserList: Page "Reservation Entries";
                 begin
                     custtab.SetRange("No.", Rec."Contact No.");
                     if custtab.FindFirst() then begin
                         custlist.SetTableView(custtab);
                         custlist.LookupMode(true);
                         if custlist.RunModal() = Action::LookupOK then;
+                    end;
+                    Reser.SetRange("Source ID", Rec.Code);
+                    if Reser.FindFirst() then begin
+                        ReserList.SetTableView(Reser);
+                        ReserList.LookupMode(true);
+                        if ReserList.RunModal() = Action::LookupOK then;
                     end;
                 end;
             }
