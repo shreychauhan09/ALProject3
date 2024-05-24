@@ -24,7 +24,23 @@ pageextension 50007 "Purchases & Payables Setup EXT" extends "Purchases & Payabl
                 var
                     intval: Integer;
                     MYName: Text;
+                    Year: Integer;
                 begin
+                    Evaluate(intval, DelChr(Format(Rec.Year), '=', 'Y,M,D'));
+                    MYName := DelChr(Format(Rec.Year), '=', Format(intval));
+                    if MYName = 'Y' then begin
+                        Year := Date2DMY(Today, 3);
+                        Year += intval;
+                        Message('%1 Years', Year);
+                    end else if MYName = 'M' then begin
+                        Year := Date2DMY(Today, 2);
+                        Year += intval;
+                        Message('%1 Months', Year);
+                    end else begin
+                        Year := Date2DMY(Today, 1);
+                        Year += intval;
+                        Message('%1 Days', Year);
+                    end;
                     Evaluate(intval, DelChr(Format(Rec.Year), '=', 'Y,M'));
                     MYName := DelChr(Format(Rec.Year), '=', Format(intval));
                     if MYName = 'Y' then begin
