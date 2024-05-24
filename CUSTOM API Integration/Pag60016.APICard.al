@@ -3,6 +3,7 @@
 /// </summary>
 #pragma warning disable AL0789
 using Microsoft.Foundation.attachment;
+using Microsoft.Sales.Customer;
 using Microsoft.Sales.Document;
 #pragma warning restore AL0789
 #pragma warning disable AL0679
@@ -92,6 +93,23 @@ page 60016 "API Card"
                     Rec.Validate(Name, 'Mohnish');
                     Rec.Validate(Address, 'Navi Mumbai');
                     Rec.Modify(true);
+                end;
+            }
+            action("Page with Ok and Cancle Button")
+            {
+                ApplicationArea = All;
+                Caption = 'Page with Ok and Cancle Button';
+                trigger OnAction()
+                var
+                    custtab: Record Customer;
+                    custlist: Page "Customer List";
+                begin
+                    custtab.SetRange("No.", Rec."Contact No.");
+                    if custtab.FindFirst() then begin
+                        custlist.SetTableView(custtab);
+                        custlist.LookupMode(true);
+                        if custlist.RunModal() = Action::LookupOK then;
+                    end;
                 end;
             }
             // action("Word Count")
