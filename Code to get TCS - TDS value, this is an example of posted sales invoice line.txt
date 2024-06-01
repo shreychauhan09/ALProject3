@@ -1,0 +1,31 @@
+Code to get TCS / TDS value, this is an example of posted sales invoice line,
+local procedure GetDocumentTCSAmt(DocNo: Code[20]) DocTCSAmt: Decimal
+    var
+        SalesInvoiceLine: record "Sales Invoice Line";
+    begin
+        SalesInvoiceLine.SetRange("Document No.", DocNo);
+        SalesInvoiceLine.SetFilter("TCS Nature of Collection", '<>%1', '');
+        if SalesInvoiceLine.FindSet() then
+            repeat
+                DocTCSAmt += GetTDSAmount(SalesInvoiceLine.RecordId);
+            until SalesInvoiceLine.Next() = 0;
+ 
+    end;
+ 
+local procedure GetTDSAmount(RecID: RecordID): Decimal
+    var
+        TaxTransactionValue: Record "Tax Transaction Value";
+        TCSSetup: Record "TCS Setup";
+    begin
+        if not TCSSetup.Get() then
+            exit;
+ 
+        TaxTransactionValue.SetRange("Tax Record ID", RecID);
+        TaxTransactionValue.SetRange("Value Type", TaxTransactionValue."Value Type"::COMPONENT);
+        TaxTransactionValue.SetRange("Tax Type", TCSSetup."Tax Type");
+        TaxTransactionValue.SetFilter(Percent, '<>%1', 0);
+        if not TaxTransactionValue.IsEmpty() then
+            TaxTransactionValue.CalcSums(Amount);
+ 
+        exit(TaxTransactionValue.Amount);
+    end;
