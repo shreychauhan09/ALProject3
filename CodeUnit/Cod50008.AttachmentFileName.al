@@ -69,14 +69,12 @@ codeunit 50008 "Attachment FileName"
 
         case ReportUsage of
             ReportSelectionUsage::"S.Invoice".AsInteger():
-                begin
-                    if SalesInvoiceHeader.Get(PostedDocNo) then begin
-                        EmailAttachments.SetRange(Scenario, Enum::"Email Scenario"::"Sales Order"); // Adjust Enum as per your usage
-                        if EmailAttachments.FindFirst() then begin
-                            EmailAttachments."Attachment Name" := StrSubstNo(SalesReportFileNameMsg, EmailAttachments."Attachment Name", PostedDocNo);
-                            EmailAttachments.Modify();
-                            AttachmentFileName := EmailAttachments."Attachment Name";
-                        end;
+                if SalesInvoiceHeader.Get(PostedDocNo) then begin
+                    EmailAttachments.SetRange(Scenario, Enum::"Email Scenario"::"Sales Order"); // Adjust Enum as per your usage
+                    if EmailAttachments.FindFirst() then begin
+                        EmailAttachments."Attachment Name" := StrSubstNo(SalesReportFileNameMsg, EmailAttachments."Attachment Name", PostedDocNo);
+                        EmailAttachments.Modify();
+                        AttachmentFileName := EmailAttachments."Attachment Name";
                     end;
                 end;
         end;

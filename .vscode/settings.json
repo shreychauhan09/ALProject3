@@ -1,5 +1,7 @@
 {
  "editor.fontFamily": "Consolas, 'Courier New', monospace" ,
 "editor.fontSize": 14,
-"editor.indentSize": "tabSize"
+"editor.indentSize": "tabSize",
+"al.enableCodeAnalysis": true,
+"al.codeAnalyzers": ["${CodeCop}","${UICop}"]
 }

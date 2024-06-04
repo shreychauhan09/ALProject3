@@ -18,7 +18,7 @@ report 50062 "Cost Share Reports"
             column(Description; Description)
             {
             }
-            column(COMPANYNAME; COMPANYPROPERTY.DisplayName)
+            column(COMPANYNAME; COMPANYPROPERTY.DisplayName())
             {
             }
             column(UserWorkDate; UserWorkDate)
