@@ -293,292 +293,6 @@ report 50001 "Day Book Vendor Led Entry New"
                     column(GetAmountLCY; AmountLCY1)
                     {
                     }
-
-                    dataitem("Vendor Ledger Entry 1"; "Vendor Ledger Entry")
-                    {
-                        // DataItemLink = "Vendor No." = field("Vendor No."), "Document No." = field("Document No."), "Posting Date" = field("Posting Date"), "Entry No." = field("Entry No.");
-                        // DataItemLink = "Document No." = field("Document No."), "Posting Date" = field("Posting Date");
-                        // DataItemLinkReference = "G/L Entry";
-                        DataItemTableView = SORTING("Entry No.")
-                                    ORDER(Ascending);
-                        column(VENPOST; "Vendor Ledger Entry 1"."Posting Date")
-                        {
-                        }
-                        column(VENDODC; "Vendor Ledger Entry 1"."Document No.")
-                        {
-                        }
-                        dataitem(DetailedVendorLedgEntry1; "Detailed Vendor Ledg. Entry")
-                        {
-                            DataItemLink = "Applied Vend. Ledger Entry No." = FIELD("Entry No.");
-                            DataItemLinkReference = "Vendor Ledger Entry 1";
-                            DataItemTableView = SORTING("Applied Vend. Ledger Entry No.", "Entry Type")
-                                        WHERE(Unapplied = CONST(false));
-                            column(AppliedVLENo_DtldVendLedgEntry; "Applied Vend. Ledger Entry No.")
-                            {
-                            }
-                            dataitem(VendLedgEntry1; "Vendor Ledger Entry")
-                            {
-                                DataItemLink = "Entry No." = FIELD("Vendor Ledger Entry No.");
-                                DataItemLinkReference = DetailedVendorLedgEntry1;
-                                DataItemTableView = SORTING("Entry No.");
-                                column(PostingDate_VendLedgEntry1; FORMAT("Posting Date", 0, '<Day,2>/<Month,02>/<Year4>'))
-                                {
-                                }
-                                column(DocType_VendLedgEntry1; "Document Type")
-                                {
-                                    IncludeCaption = true;
-                                }
-                                column(DocNo_VendLedgEntry1; "Document No.")
-                                {
-                                    IncludeCaption = true;
-                                }
-                                column(Description_VendLedgEntry1; Description)
-                                {
-                                    IncludeCaption = true;
-                                }
-                                column(VEND1AMOUNT; VendLedgEntry1."Amount (LCY)")
-                                {
-                                }
-                                column(NegShowAmountVendLedgEntry1; -NegShowAmountVendLedgEntry1)
-                                {
-                                }
-                                column(NegPmtDiscInvCurrVendLedgEntry1; -NegPmtDiscInvCurrVendLedgEntry1)
-                                {
-                                }
-                                column(NegPmtTolInvCurrVendLedgEntry1; -NegPmtTolInvCurrVendLedgEntry1)
-                                {
-                                }
-                                column(External_Document_No_1; "External Document No.")
-                                {
-                                }
-                                column(Due_Date1; "Due Date")
-                                {
-                                }
-                                column(Closed_by_Amount1; "Closed by Amount")
-                                {
-                                }
-                                column(VLEcomment1; VLEcomment1)
-                                {
-                                }
-                                trigger OnAfterGetRecord()
-                                var
-                                    PostPurchInv: Record "Purch. Inv. Header";
-                                    PurCommLine: Record "Purch. Comment Line";
-                                begin
-                                    IF "Entry No." = "Vendor Ledger Entry 1"."Entry No." THEN
-                                        CurrReport.SKIP();
-
-                                    NegPmtDiscInvCurrVendLedgEntry1 := 0;
-                                    NegPmtTolInvCurrVendLedgEntry1 := 0;
-                                    PmtDiscPmtCurr := 0;
-                                    PmtTolPmtCurr := 0;
-
-                                    NegShowAmountVendLedgEntry1 := -DetailedVendorLedgEntry1.Amount;
-
-                                    IF "Vendor Ledger Entry"."Currency Code" <> "Currency Code" THEN BEGIN
-                                        NegPmtDiscInvCurrVendLedgEntry1 := ROUND("Pmt. Disc. Rcd.(LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
-                                        NegPmtTolInvCurrVendLedgEntry1 := ROUND("Pmt. Tolerance (LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
-                                        AppliedAmount :=
-                                          ROUND(
-                                            -DetailedVendorLedgEntry1.Amount / "Original Currency Factor" * "Vendor Ledger Entry 1"."Original Currency Factor",
-                                            Currency."Amount Rounding Precision");
-                                    END ELSE BEGIN
-                                        NegPmtDiscInvCurrVendLedgEntry1 := ROUND("Pmt. Disc. Rcd.(LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
-                                        NegPmtTolInvCurrVendLedgEntry1 := ROUND("Pmt. Tolerance (LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
-                                        AppliedAmount := -DetailedVendorLedgEntry1.Amount;
-                                    END;
-
-                                    PmtDiscPmtCurr := ROUND("Pmt. Disc. Rcd.(LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
-
-                                    PmtTolPmtCurr := ROUND("Pmt. Tolerance (LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
-
-                                    RemainingAmount := (RemainingAmount - AppliedAmount) + PmtDiscPmtCurr + PmtTolPmtCurr;
-                                    PostPurchInv.Reset();
-                                    PostPurchInv.SetRange("No.", VendLedgEntry1."Document No.");
-                                    if PostPurchInv.FindFirst() then begin
-                                        Clear(VLEcomment1);
-                                        PurCommLine.Reset();
-                                        //PurCommLine.SetFilter("Document Type", '%1', "Document Type"::Invoice);
-                                        PurCommLine.SetRange("No.", PostPurchInv."No.");
-                                        if PurCommLine.FindSet() then
-                                            repeat
-                                                VLEcomment1 += PurCommLine.Comment + ' ';
-                                            until PurCommLine.Next() = 0;
-
-                                    end;
-                                end;
-                            }
-                        }
-                        dataitem(DetailedVendorLedgEntry2; "Detailed Vendor Ledg. Entry")
-                        {
-                            DataItemLink = "Vendor Ledger Entry No." = FIELD("Entry No.");
-                            DataItemLinkReference = "Vendor Ledger Entry 1";
-                            DataItemTableView = SORTING("Vendor Ledger Entry No.", "Entry Type", "Posting Date")
-                                        WHERE(Unapplied = CONST(false));
-                            column(VLENo_DtldVendLedgEntry; "Vendor Ledger Entry No.")
-                            {
-                            }
-                            dataitem(VendLedgEntry2; "Vendor Ledger Entry")
-                            {
-                                DataItemLink = "Entry No." = FIELD("Applied Vend. Ledger Entry No.");
-                                DataItemLinkReference = DetailedVendorLedgEntry2;
-                                DataItemTableView = SORTING("Entry No.");
-                                column(NegAppliedAmt; -AppliedAmount)
-                                {
-                                }
-                                column(Description_VendLedgEntry2; Description)
-                                {
-                                }
-                                column(DocNo_VendLedgEntry2; "Document No.")
-                                {
-                                }
-                                column(DocType_VendLedgEntry2; "Document Type")
-                                {
-                                }
-                                column(VEND2AMOUNT; VendLedgEntry2."Amount (LCY)")
-                                {
-                                }
-                                column(PostingDate_VendLedgEntry2; FORMAT("Posting Date", 0, '<Day,2>/<Month,02>/<Year4>'))
-                                {
-                                }
-                                column(NegPmtDiscInvCurrVendLedgEntry2; -NegPmtDiscInvCurrVendLedgEntry1)
-                                {
-                                }
-                                column(NegPmtTolInvCurr1VendLedgEntry2; -NegPmtTolInvCurrVendLedgEntry1)
-                                {
-                                }
-                                column(External_Document_No_2; "External Document No.")
-                                {
-                                }
-                                column(Closed_by_Amount2; "Closed by Amount")
-                                {
-                                }
-                                column(Due_Date2; "Due Date")
-                                {
-                                }
-                                column(VLEcomment2; VLEcomment2)
-                                {
-                                }
-                                trigger OnAfterGetRecord()
-                                var
-                                    PostPurchInv: Record "Purch. Inv. Header";
-                                    PurCommLine: Record "Purch. Comment Line";
-                                begin
-                                    IF "Entry No." = "Vendor Ledger Entry 1"."Entry No." THEN
-                                        CurrReport.SKIP();
-
-                                    NegPmtDiscInvCurrVendLedgEntry1 := 0;
-                                    NegPmtTolInvCurrVendLedgEntry1 := 0;
-                                    PmtDiscPmtCurr := 0;
-                                    PmtTolPmtCurr := 0;
-
-                                    NegShowAmountVendLedgEntry1 := DetailedVendorLedgEntry2.Amount;
-
-                                    IF "Vendor Ledger Entry"."Currency Code" <> "Currency Code" THEN BEGIN
-                                        NegPmtDiscInvCurrVendLedgEntry1 := ROUND("Pmt. Disc. Rcd.(LCY)" * "Original Currency Factor");
-                                        NegPmtTolInvCurrVendLedgEntry1 := ROUND("Pmt. Tolerance (LCY)" * "Original Currency Factor");
-                                    END ELSE BEGIN
-                                        NegPmtDiscInvCurrVendLedgEntry1 := ROUND("Pmt. Disc. Rcd.(LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
-                                        NegPmtTolInvCurrVendLedgEntry1 := ROUND("Pmt. Tolerance (LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
-                                    END;
-
-                                    PmtDiscPmtCurr := ROUND("Pmt. Disc. Rcd.(LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
-
-                                    PmtTolPmtCurr := ROUND("Pmt. Tolerance (LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
-
-                                    AppliedAmount := DetailedVendorLedgEntry2.Amount;
-                                    RemainingAmount := (RemainingAmount - AppliedAmount) + PmtDiscPmtCurr + PmtTolPmtCurr;
-                                    PostPurchInv.Reset();
-                                    PostPurchInv.SetRange("No.", VendLedgEntry2."Document No.");
-                                    if PostPurchInv.FindFirst() then begin
-                                        Clear(VLEcomment2);
-                                        PurCommLine.Reset();
-                                        //PurCommLine.SetFilter("Document Type", '%1', "Document Type"::Invoice);
-                                        PurCommLine.SetRange("No.", PostPurchInv."No.");
-                                        if PurCommLine.FindSet() then
-                                            repeat
-                                                VLEcomment2 += PurCommLine.Comment + ' ';
-                                            until PurCommLine.Next() = 0;
-                                    end;
-                                end;
-                            }
-                        }
-                        dataitem("Detailed Vendor Ledg. Entry"; "Detailed Vendor Ledg. Entry")
-                        {
-                            DataItemTableView = SORTING("Entry No.")
-                                        ORDER(Ascending)
-                                        WHERE("Entry Type" = FILTER(Application));
-                            column(Application_PostingDate; FORMAT(AppliedDate))
-                            {
-                            }
-                            column(Application_DocumentNo; AppliedDocNo)
-                            {
-                            }
-                            column(Application_ExtDocumentNo; InvoiceNo)
-                            {
-                            }
-                            column(Application_DocumentDate; FORMAT(InvoiceDate))
-                            {
-                            }
-                            column(Application_AmountLCY; "Detailed Vendor Ledg. Entry"."Amount (LCY)")
-                            {
-                            }
-                            column(Application_AppliestoID; "Vendor Ledger Entry"."Applies-to ID")
-                            {
-                            }
-
-                            trigger OnAfterGetRecord()
-                            var
-                                VendorLedgerEntry: Record "Vendor Ledger Entry";
-                            begin
-                                ClearApplicationVariables;
-                                VendorLedgerEntry.GET("Vendor Ledger Entry No.");
-                                AppliedDocNo := VendorLedgerEntry."Document No.";
-                                AppliedDate := VendorLedgerEntry."Posting Date";
-                                InvoiceNo := VendorLedgerEntry."External Document No.";
-                                InvoiceDate := VendorLedgerEntry."Document Date";
-                                CheckRepeatLoop += 1;
-                            end;
-
-                            trigger OnPreDataItem()
-                            begin
-                                IF (("G/L Entry"."Source Code" = 'BANKPYMTV') OR ("G/L Entry"."Source Code" = 'BANKRCPTV')
-                                  OR ("G/L Entry"."Source Code" = 'CASHPYMTV') OR ("G/L Entry"."Source Code" = 'CASHRCPTV')
-                                  OR ("G/L Entry"."Source Code" = 'GENJNL') OR ("G/L Entry"."Source Code" = 'PURCHASES')) THEN BEGIN
-                                    SETFILTER("Applied Vend. Ledger Entry No.", '%1', "Vendor Ledger Entry 1"."Entry No.");
-                                    SETFILTER("Vendor Ledger Entry No.", '<>%1', "Vendor Ledger Entry 1"."Entry No.");
-                                END
-                                ELSE
-                                    SETFILTER("Vendor Ledger Entry No.", '%1', "Vendor Ledger Entry 1"."Entry No.");
-                                SETRANGE("Detailed Vendor Ledg. Entry".Unapplied, false);
-                            end;
-                        }
-
-                        trigger OnAfterGetRecord()
-                        begin
-                            CheckRepeatLoop += 1;
-                            IF docno1 <> "Vendor Ledger Entry"."Document No." THEN begin
-                                SETRANGE("Document No.", "G/L Entry"."Document No.");
-                                SETRANGE("Posting Date", "G/L Entry"."Posting Date");
-                            end
-                            ELSE
-                                CurrReport.SKIP();
-                            docno1 := "G/L Entry"."Document No.";
-                        end;
-
-                        trigger OnPreDataItem()
-                        begin
-                            IF (CheckRepeatLoop > 1) THEN
-                                CurrReport.BREAK();
-
-                            IF ((HasApplicationOf = 0) OR (HasApplicationOf = 2)) THEN
-                                CurrReport.BREAK();
-
-
-                            SETRANGE("Document No.", "G/L Entry"."Document No.");
-                            SetRange("Posting Date", "G/L Entry"."Posting Date");
-                        end;
-                    }
                     trigger OnAfterGetRecord()
                     begin
                         if "G/L Account No." <> GLAcc."No." then
@@ -616,7 +330,291 @@ report 50001 "Day Book Vendor Led Entry New"
                         SetFilter("Transaction No.", TransactionNoFilter);
                     end;
                 }
+                dataitem("Vendor Ledger Entry 1"; "Vendor Ledger Entry")
+                {
+                    // DataItemLink = "Vendor No." = field("Vendor No."), "Document No." = field("Document No."), "Posting Date" = field("Posting Date"), "Entry No." = field("Entry No.");
+                    // DataItemLink = "Document No." = field("Document No."), "Posting Date" = field("Posting Date");
+                    // DataItemLinkReference = "G/L Entry";
+                    DataItemTableView = SORTING("Entry No.")
+                                    ORDER(Ascending);
+                    column(VENPOST; "Vendor Ledger Entry 1"."Posting Date")
+                    {
+                    }
+                    column(VENDODC; "Vendor Ledger Entry 1"."Document No.")
+                    {
+                    }
+                    dataitem(DetailedVendorLedgEntry1; "Detailed Vendor Ledg. Entry")
+                    {
+                        DataItemLink = "Applied Vend. Ledger Entry No." = FIELD("Entry No.");
+                        DataItemLinkReference = "Vendor Ledger Entry 1";
+                        DataItemTableView = SORTING("Applied Vend. Ledger Entry No.", "Entry Type")
+                                        WHERE(Unapplied = CONST(false));
+                        column(AppliedVLENo_DtldVendLedgEntry; "Applied Vend. Ledger Entry No.")
+                        {
+                        }
+                        dataitem(VendLedgEntry1; "Vendor Ledger Entry")
+                        {
+                            DataItemLink = "Entry No." = FIELD("Vendor Ledger Entry No.");
+                            DataItemLinkReference = DetailedVendorLedgEntry1;
+                            DataItemTableView = SORTING("Entry No.");
+                            column(PostingDate_VendLedgEntry1; FORMAT("Posting Date", 0, '<Day,2>/<Month,02>/<Year4>'))
+                            {
+                            }
+                            column(DocType_VendLedgEntry1; "Document Type")
+                            {
+                                IncludeCaption = true;
+                            }
+                            column(DocNo_VendLedgEntry1; "Document No.")
+                            {
+                                IncludeCaption = true;
+                            }
+                            column(Description_VendLedgEntry1; Description)
+                            {
+                                IncludeCaption = true;
+                            }
+                            column(VEND1AMOUNT; VendLedgEntry1."Amount (LCY)")
+                            {
+                            }
+                            column(NegShowAmountVendLedgEntry1; -NegShowAmountVendLedgEntry1)
+                            {
+                            }
+                            column(NegPmtDiscInvCurrVendLedgEntry1; -NegPmtDiscInvCurrVendLedgEntry1)
+                            {
+                            }
+                            column(NegPmtTolInvCurrVendLedgEntry1; -NegPmtTolInvCurrVendLedgEntry1)
+                            {
+                            }
+                            column(External_Document_No_1; "External Document No.")
+                            {
+                            }
+                            column(Due_Date1; "Due Date")
+                            {
+                            }
+                            column(Closed_by_Amount1; "Closed by Amount")
+                            {
+                            }
+                            column(VLEcomment1; VLEcomment1)
+                            {
+                            }
+                            trigger OnAfterGetRecord()
+                            var
+                                PostPurchInv: Record "Purch. Inv. Header";
+                                PurCommLine: Record "Purch. Comment Line";
+                            begin
+                                IF "Entry No." = "Vendor Ledger Entry 1"."Entry No." THEN
+                                    CurrReport.SKIP();
 
+                                NegPmtDiscInvCurrVendLedgEntry1 := 0;
+                                NegPmtTolInvCurrVendLedgEntry1 := 0;
+                                PmtDiscPmtCurr := 0;
+                                PmtTolPmtCurr := 0;
+
+                                NegShowAmountVendLedgEntry1 := -DetailedVendorLedgEntry1.Amount;
+
+                                IF "Vendor Ledger Entry"."Currency Code" <> "Currency Code" THEN BEGIN
+                                    NegPmtDiscInvCurrVendLedgEntry1 := ROUND("Pmt. Disc. Rcd.(LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
+                                    NegPmtTolInvCurrVendLedgEntry1 := ROUND("Pmt. Tolerance (LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
+                                    AppliedAmount :=
+                                      ROUND(
+                                        -DetailedVendorLedgEntry1.Amount / "Original Currency Factor" * "Vendor Ledger Entry 1"."Original Currency Factor",
+                                        Currency."Amount Rounding Precision");
+                                END ELSE BEGIN
+                                    NegPmtDiscInvCurrVendLedgEntry1 := ROUND("Pmt. Disc. Rcd.(LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
+                                    NegPmtTolInvCurrVendLedgEntry1 := ROUND("Pmt. Tolerance (LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
+                                    AppliedAmount := -DetailedVendorLedgEntry1.Amount;
+                                END;
+
+                                PmtDiscPmtCurr := ROUND("Pmt. Disc. Rcd.(LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
+
+                                PmtTolPmtCurr := ROUND("Pmt. Tolerance (LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
+
+                                RemainingAmount := (RemainingAmount - AppliedAmount) + PmtDiscPmtCurr + PmtTolPmtCurr;
+                                PostPurchInv.Reset();
+                                PostPurchInv.SetRange("No.", VendLedgEntry1."Document No.");
+                                if PostPurchInv.FindFirst() then begin
+                                    Clear(VLEcomment1);
+                                    PurCommLine.Reset();
+                                    //PurCommLine.SetFilter("Document Type", '%1', "Document Type"::Invoice);
+                                    PurCommLine.SetRange("No.", PostPurchInv."No.");
+                                    if PurCommLine.FindSet() then
+                                        repeat
+                                            VLEcomment1 += PurCommLine.Comment + ' ';
+                                        until PurCommLine.Next() = 0;
+
+                                end;
+                            end;
+                        }
+                    }
+                    dataitem(DetailedVendorLedgEntry2; "Detailed Vendor Ledg. Entry")
+                    {
+                        DataItemLink = "Vendor Ledger Entry No." = FIELD("Entry No.");
+                        DataItemLinkReference = "Vendor Ledger Entry 1";
+                        DataItemTableView = SORTING("Vendor Ledger Entry No.", "Entry Type", "Posting Date")
+                                        WHERE(Unapplied = CONST(false));
+                        column(VLENo_DtldVendLedgEntry; "Vendor Ledger Entry No.")
+                        {
+                        }
+                        dataitem(VendLedgEntry2; "Vendor Ledger Entry")
+                        {
+                            DataItemLink = "Entry No." = FIELD("Applied Vend. Ledger Entry No.");
+                            DataItemLinkReference = DetailedVendorLedgEntry2;
+                            DataItemTableView = SORTING("Entry No.");
+                            column(NegAppliedAmt; -AppliedAmount)
+                            {
+                            }
+                            column(Description_VendLedgEntry2; Description)
+                            {
+                            }
+                            column(DocNo_VendLedgEntry2; "Document No.")
+                            {
+                            }
+                            column(DocType_VendLedgEntry2; "Document Type")
+                            {
+                            }
+                            column(VEND2AMOUNT; VendLedgEntry2."Amount (LCY)")
+                            {
+                            }
+                            column(PostingDate_VendLedgEntry2; FORMAT("Posting Date", 0, '<Day,2>/<Month,02>/<Year4>'))
+                            {
+                            }
+                            column(NegPmtDiscInvCurrVendLedgEntry2; -NegPmtDiscInvCurrVendLedgEntry1)
+                            {
+                            }
+                            column(NegPmtTolInvCurr1VendLedgEntry2; -NegPmtTolInvCurrVendLedgEntry1)
+                            {
+                            }
+                            column(External_Document_No_2; "External Document No.")
+                            {
+                            }
+                            column(Closed_by_Amount2; "Closed by Amount")
+                            {
+                            }
+                            column(Due_Date2; "Due Date")
+                            {
+                            }
+                            column(VLEcomment2; VLEcomment2)
+                            {
+                            }
+                            trigger OnAfterGetRecord()
+                            var
+                                PostPurchInv: Record "Purch. Inv. Header";
+                                PurCommLine: Record "Purch. Comment Line";
+                            begin
+                                IF "Entry No." = "Vendor Ledger Entry 1"."Entry No." THEN
+                                    CurrReport.SKIP();
+
+                                NegPmtDiscInvCurrVendLedgEntry1 := 0;
+                                NegPmtTolInvCurrVendLedgEntry1 := 0;
+                                PmtDiscPmtCurr := 0;
+                                PmtTolPmtCurr := 0;
+
+                                NegShowAmountVendLedgEntry1 := DetailedVendorLedgEntry2.Amount;
+
+                                IF "Vendor Ledger Entry"."Currency Code" <> "Currency Code" THEN BEGIN
+                                    NegPmtDiscInvCurrVendLedgEntry1 := ROUND("Pmt. Disc. Rcd.(LCY)" * "Original Currency Factor");
+                                    NegPmtTolInvCurrVendLedgEntry1 := ROUND("Pmt. Tolerance (LCY)" * "Original Currency Factor");
+                                END ELSE BEGIN
+                                    NegPmtDiscInvCurrVendLedgEntry1 := ROUND("Pmt. Disc. Rcd.(LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
+                                    NegPmtTolInvCurrVendLedgEntry1 := ROUND("Pmt. Tolerance (LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
+                                END;
+
+                                PmtDiscPmtCurr := ROUND("Pmt. Disc. Rcd.(LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
+
+                                PmtTolPmtCurr := ROUND("Pmt. Tolerance (LCY)" * "Vendor Ledger Entry 1"."Original Currency Factor");
+
+                                AppliedAmount := DetailedVendorLedgEntry2.Amount;
+                                RemainingAmount := (RemainingAmount - AppliedAmount) + PmtDiscPmtCurr + PmtTolPmtCurr;
+                                PostPurchInv.Reset();
+                                PostPurchInv.SetRange("No.", VendLedgEntry2."Document No.");
+                                if PostPurchInv.FindFirst() then begin
+                                    Clear(VLEcomment2);
+                                    PurCommLine.Reset();
+                                    //PurCommLine.SetFilter("Document Type", '%1', "Document Type"::Invoice);
+                                    PurCommLine.SetRange("No.", PostPurchInv."No.");
+                                    if PurCommLine.FindSet() then
+                                        repeat
+                                            VLEcomment2 += PurCommLine.Comment + ' ';
+                                        until PurCommLine.Next() = 0;
+                                end;
+                            end;
+                        }
+                    }
+                    dataitem("Detailed Vendor Ledg. Entry"; "Detailed Vendor Ledg. Entry")
+                    {
+                        DataItemTableView = SORTING("Entry No.")
+                                        ORDER(Ascending)
+                                        WHERE("Entry Type" = FILTER(Application));
+                        column(Application_PostingDate; FORMAT(AppliedDate))
+                        {
+                        }
+                        column(Application_DocumentNo; AppliedDocNo)
+                        {
+                        }
+                        column(Application_ExtDocumentNo; InvoiceNo)
+                        {
+                        }
+                        column(Application_DocumentDate; FORMAT(InvoiceDate))
+                        {
+                        }
+                        column(Application_AmountLCY; "Detailed Vendor Ledg. Entry"."Amount (LCY)")
+                        {
+                        }
+                        column(Application_AppliestoID; "Vendor Ledger Entry"."Applies-to ID")
+                        {
+                        }
+
+                        trigger OnAfterGetRecord()
+                        var
+                            VendorLedgerEntry: Record "Vendor Ledger Entry";
+                        begin
+                            ClearApplicationVariables;
+                            VendorLedgerEntry.GET("Vendor Ledger Entry No.");
+                            AppliedDocNo := VendorLedgerEntry."Document No.";
+                            AppliedDate := VendorLedgerEntry."Posting Date";
+                            InvoiceNo := VendorLedgerEntry."External Document No.";
+                            InvoiceDate := VendorLedgerEntry."Document Date";
+                            CheckRepeatLoop += 1;
+                        end;
+
+                        trigger OnPreDataItem()
+                        begin
+                            IF (("G/L Entry"."Source Code" = 'BANKPYMTV') OR ("G/L Entry"."Source Code" = 'BANKRCPTV')
+                              OR ("G/L Entry"."Source Code" = 'CASHPYMTV') OR ("G/L Entry"."Source Code" = 'CASHRCPTV')
+                              OR ("G/L Entry"."Source Code" = 'GENJNL') OR ("G/L Entry"."Source Code" = 'PURCHASES')) THEN BEGIN
+                                SETFILTER("Applied Vend. Ledger Entry No.", '%1', "Vendor Ledger Entry 1"."Entry No.");
+                                SETFILTER("Vendor Ledger Entry No.", '<>%1', "Vendor Ledger Entry 1"."Entry No.");
+                            END
+                            ELSE
+                                SETFILTER("Vendor Ledger Entry No.", '%1', "Vendor Ledger Entry 1"."Entry No.");
+                            SETRANGE("Detailed Vendor Ledg. Entry".Unapplied, false);
+                        end;
+                    }
+
+                    trigger OnAfterGetRecord()
+                    begin
+                        CheckRepeatLoop += 1;
+                        IF docno1 <> "Vendor Ledger Entry"."Document No." THEN begin
+                            SETRANGE("Document No.", "Vendor Ledger Entry"."Document No.");
+                            SETRANGE("Posting Date", "Vendor Ledger Entry"."Posting Date");
+                        end
+                        ELSE
+                            CurrReport.SKIP();
+                        docno1 := "Vendor Ledger Entry"."Document No.";
+                    end;
+
+                    trigger OnPreDataItem()
+                    begin
+                        IF (CheckRepeatLoop > 1) THEN
+                            CurrReport.BREAK();
+
+                        IF ((HasApplicationOf = 0) OR (HasApplicationOf = 2)) THEN
+                            CurrReport.BREAK();
+
+
+                        SETRANGE("Document No.", "Vendor Ledger Entry"."Document No.");
+                        SetRange("Posting Date", "Vendor Ledger Entry"."Posting Date");
+                    end;
+                }
                 trigger OnAfterGetRecord()
                 var
                     TempVATEntry: Record "VAT Entry" temporary;
