@@ -10,8 +10,8 @@ controladdin "SGN SGNSignaturePad"
     HorizontalShrink = true;
     RequestedHeight = 400;
     RequestedWidth = 1280;
-    Scripts = 'HandWritten Signature/javascript/sign.js', 'https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js';
-    StyleSheets = 'HandWritten Signature/css/style.css';
+    Scripts = 'HandWrittenSignature/javascript/sign.js', 'https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js';
+    StyleSheets = 'HandWrittenSignature/css/style.css';
 
     event Ready()
     procedure InitializeSignaturePad()
