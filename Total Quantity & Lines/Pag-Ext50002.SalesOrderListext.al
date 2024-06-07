@@ -7,14 +7,14 @@ pageextension 50002 "Sales Order List ext" extends "Sales Order List"
     {
         addafter(Amount)
         {
-            field("Total Quantity"; Rec."Total Quantity")
-            {
-                ApplicationArea = All;
-            }
-            field("Total Lines"; Rec."Total Lines")
-            {
-                ApplicationArea = All;
-            }
+            // field("Total Quantity"; Rec."Total Quantity")
+            // {
+            //     ApplicationArea = All;
+            // }
+            // field("Total Lines"; Rec."Total Lines")
+            // {
+            //     ApplicationArea = All;
+            // }
         }
     }
 }
