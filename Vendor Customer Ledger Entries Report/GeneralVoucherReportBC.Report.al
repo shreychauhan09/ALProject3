@@ -282,6 +282,9 @@ report 50151 "General Voucher Report BC"
                 column(VENDODC; "Vendor Ledger Entry"."Document No.")
                 {
                 }
+                column(VENDocument_Date; "Vendor Ledger Entry"."Document Date")
+                {
+                }
                 dataitem(DetailedVendorLedgEntry1; "Detailed Vendor Ledg. Entry")
                 {
                     DataItemLink = "Applied Vend. Ledger Entry No." = FIELD("Entry No.");
@@ -506,6 +509,9 @@ report 50151 "General Voucher Report BC"
                 {
                 }
                 column(CUSTPOST; FORMAT("Cust. Ledger Entry"."Posting Date", 0, '<Day,2>/<Month,02>/<Year4>'))
+                {
+                }
+                column(CUSTDocument_Date; "Cust. Ledger Entry"."Document Date")
                 {
                 }
                 dataitem(DetailedCustLedgEntry1; "Detailed Cust. Ledg. Entry")
