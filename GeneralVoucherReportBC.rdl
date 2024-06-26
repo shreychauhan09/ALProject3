@@ -11,448 +11,6 @@
       <rd:DataSourceID>4e7450a8-fbd1-48ef-a453-c6bd2c2c96d0</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="GLAccountNo_GLEntry">
-          <DataField>GLAccountNo_GLEntry</DataField>
-        </Field>
-        <Field Name="VoucherSourceDesc">
-          <DataField>VoucherSourceDesc</DataField>
-        </Field>
-        <Field Name="DocumentNo_GLEntry">
-          <DataField>DocumentNo_GLEntry</DataField>
-        </Field>
-        <Field Name="BRANCHADDRESS1">
-          <DataField>BRANCHADDRESS1</DataField>
-        </Field>
-        <Field Name="BRANCHADDRESS2">
-          <DataField>BRANCHADDRESS2</DataField>
-        </Field>
-        <Field Name="PostingDateFormatted">
-          <DataField>PostingDateFormatted</DataField>
-        </Field>
-        <Field Name="CompanyInformationAddress">
-          <DataField>CompanyInformationAddress</DataField>
-        </Field>
-        <Field Name="CompanyInformationName">
-          <DataField>CompanyInformationName</DataField>
-        </Field>
-        <Field Name="CreditAmount_GLEntry">
-          <DataField>CreditAmount_GLEntry</DataField>
-        </Field>
-        <Field Name="CreditAmount_GLEntryFormat">
-          <DataField>CreditAmount_GLEntryFormat</DataField>
-        </Field>
-        <Field Name="DebitAmount_GLEntry">
-          <DataField>DebitAmount_GLEntry</DataField>
-        </Field>
-        <Field Name="DebitAmount_GLEntryFormat">
-          <DataField>DebitAmount_GLEntryFormat</DataField>
-        </Field>
-        <Field Name="Caption">
-          <DataField>Caption</DataField>
-        </Field>
-        <Field Name="DrText">
-          <DataField>DrText</DataField>
-        </Field>
-        <Field Name="GLAccName1">
-          <DataField>GLAccName1</DataField>
-        </Field>
-        <Field Name="CrText">
-          <DataField>CrText</DataField>
-        </Field>
-        <Field Name="DebitAmountTotal">
-          <DataField>DebitAmountTotal</DataField>
-        </Field>
-        <Field Name="DebitAmountTotalFormat">
-          <DataField>DebitAmountTotalFormat</DataField>
-        </Field>
-        <Field Name="CreditAmountTotal">
-          <DataField>CreditAmountTotal</DataField>
-        </Field>
-        <Field Name="CreditAmountTotalFormat">
-          <DataField>CreditAmountTotalFormat</DataField>
-        </Field>
-        <Field Name="ChequeDetail">
-          <DataField>ChequeDetail</DataField>
-        </Field>
-        <Field Name="ChequeNo">
-          <DataField>ChequeNo</DataField>
-        </Field>
-        <Field Name="ChequeDate">
-          <DataField>ChequeDate</DataField>
-        </Field>
-        <Field Name="RsNumberText1NumberText2S">
-          <DataField>RsNumberText1NumberText2S</DataField>
-        </Field>
-        <Field Name="EntryNo_GLEntry">
-          <DataField>EntryNo_GLEntry</DataField>
-        </Field>
-        <Field Name="PostingDate_GLEntry">
-          <DataField>PostingDate_GLEntry</DataField>
-        </Field>
-        <Field Name="TransactionNo_GLEntryE">
-          <DataField>TransactionNo_GLEntryE</DataField>
-        </Field>
-        <Field Name="VoucherNoCaption">
-          <DataField>VoucherNoCaption</DataField>
-        </Field>
-        <Field Name="CreditAmountCaption">
-          <DataField>CreditAmountCaption</DataField>
-        </Field>
-        <Field Name="DebitAmountCaption">
-          <DataField>DebitAmountCaption</DataField>
-        </Field>
-        <Field Name="ParticularsCaption">
-          <DataField>ParticularsCaption</DataField>
-        </Field>
-        <Field Name="AmountInWordsCaption">
-          <DataField>AmountInWordsCaption</DataField>
-        </Field>
-        <Field Name="PreparedByCaption">
-          <DataField>PreparedByCaption</DataField>
-        </Field>
-        <Field Name="CheckedByCaption">
-          <DataField>CheckedByCaption</DataField>
-        </Field>
-        <Field Name="ApprovedByCaption">
-          <DataField>ApprovedByCaption</DataField>
-        </Field>
-        <Field Name="Picture">
-          <DataField>Picture</DataField>
-        </Field>
-        <Field Name="CompanyName">
-          <DataField>CompanyName</DataField>
-        </Field>
-        <Field Name="Address">
-          <DataField>Address</DataField>
-        </Field>
-        <Field Name="Address2">
-          <DataField>Address2</DataField>
-        </Field>
-        <Field Name="City">
-          <DataField>City</DataField>
-        </Field>
-        <Field Name="PostCode">
-          <DataField>PostCode</DataField>
-        </Field>
-        <Field Name="PageNo">
-          <DataField>PageNo</DataField>
-        </Field>
-        <Field Name="HasApplicationOf">
-          <DataField>HasApplicationOf</DataField>
-        </Field>
-        <Field Name="UserName">
-          <DataField>UserName</DataField>
-        </Field>
-        <Field Name="Preparedby">
-          <DataField>Preparedby</DataField>
-        </Field>
-        <Field Name="ApproveBy">
-          <DataField>ApproveBy</DataField>
-        </Field>
-        <Field Name="PostBy">
-          <DataField>PostBy</DataField>
-        </Field>
-        <Field Name="InvoiceNo">
-          <DataField>InvoiceNo</DataField>
-        </Field>
-        <Field Name="DocDate">
-          <DataField>DocDate</DataField>
-        </Field>
-        <Field Name="PurchComment1">
-          <DataField>PurchComment1</DataField>
-        </Field>
-        <Field Name="PurchComment2">
-          <DataField>PurchComment2</DataField>
-        </Field>
-        <Field Name="PurchComment3">
-          <DataField>PurchComment3</DataField>
-        </Field>
-        <Field Name="PurchComment4">
-          <DataField>PurchComment4</DataField>
-        </Field>
-        <Field Name="PurchComment5">
-          <DataField>PurchComment5</DataField>
-        </Field>
-        <Field Name="PurchComment6">
-          <DataField>PurchComment6</DataField>
-        </Field>
-        <Field Name="PurchComment7">
-          <DataField>PurchComment7</DataField>
-        </Field>
-        <Field Name="PurchComment8">
-          <DataField>PurchComment8</DataField>
-        </Field>
-        <Field Name="PurchComment9">
-          <DataField>PurchComment9</DataField>
-        </Field>
-        <Field Name="PurchComment10">
-          <DataField>PurchComment10</DataField>
-        </Field>
-        <Field Name="tdsper">
-          <DataField>tdsper</DataField>
-        </Field>
-        <Field Name="tdslineamt">
-          <DataField>tdslineamt</DataField>
-        </Field>
-        <Field Name="BillDecptn1">
-          <DataField>BillDecptn1</DataField>
-        </Field>
-        <Field Name="DimValue1">
-          <DataField>DimValue1</DataField>
-        </Field>
-        <Field Name="comet1">
-          <DataField>comet1</DataField>
-        </Field>
-        <Field Name="DimValue">
-          <DataField>DimValue</DataField>
-        </Field>
-        <Field Name="PrintDimensions">
-          <DataField>PrintDimensions</DataField>
-        </Field>
-        <Field Name="Narration_LineNarration">
-          <DataField>Narration_LineNarration</DataField>
-        </Field>
-        <Field Name="PrintLineNarration">
-          <DataField>PrintLineNarration</DataField>
-        </Field>
-        <Field Name="IntegerOccurcesCaption">
-          <DataField>IntegerOccurcesCaption</DataField>
-        </Field>
-        <Field Name="Narration_PostedNarration1">
-          <DataField>Narration_PostedNarration1</DataField>
-        </Field>
-        <Field Name="NarrationCaption">
-          <DataField>NarrationCaption</DataField>
-        </Field>
-        <Field Name="VENPOST">
-          <DataField>VENPOST</DataField>
-        </Field>
-        <Field Name="VENDODC">
-          <DataField>VENDODC</DataField>
-        </Field>
-        <Field Name="VENDocument_Date">
-          <DataField>VENDocument_Date</DataField>
-        </Field>
-        <Field Name="AppliedVLENo_DtldVendLedgEntry">
-          <DataField>AppliedVLENo_DtldVendLedgEntry</DataField>
-        </Field>
-        <Field Name="PostingDate_VendLedgEntry1">
-          <DataField>PostingDate_VendLedgEntry1</DataField>
-        </Field>
-        <Field Name="DocType_VendLedgEntry1">
-          <DataField>DocType_VendLedgEntry1</DataField>
-        </Field>
-        <Field Name="DocNo_VendLedgEntry1">
-          <DataField>DocNo_VendLedgEntry1</DataField>
-        </Field>
-        <Field Name="Description_VendLedgEntry1">
-          <DataField>Description_VendLedgEntry1</DataField>
-        </Field>
-        <Field Name="VEND1AMOUNT">
-          <DataField>VEND1AMOUNT</DataField>
-        </Field>
-        <Field Name="VEND1AMOUNTFormat">
-          <DataField>VEND1AMOUNTFormat</DataField>
-        </Field>
-        <Field Name="NegShowAmountVendLedgEntry1">
-          <DataField>NegShowAmountVendLedgEntry1</DataField>
-        </Field>
-        <Field Name="NegShowAmountVendLedgEntry1Format">
-          <DataField>NegShowAmountVendLedgEntry1Format</DataField>
-        </Field>
-        <Field Name="NegPmtDiscInvCurrVendLedgEntry1">
-          <DataField>NegPmtDiscInvCurrVendLedgEntry1</DataField>
-        </Field>
-        <Field Name="NegPmtDiscInvCurrVendLedgEntry1Format">
-          <DataField>NegPmtDiscInvCurrVendLedgEntry1Format</DataField>
-        </Field>
-        <Field Name="NegPmtTolInvCurrVendLedgEntry1">
-          <DataField>NegPmtTolInvCurrVendLedgEntry1</DataField>
-        </Field>
-        <Field Name="NegPmtTolInvCurrVendLedgEntry1Format">
-          <DataField>NegPmtTolInvCurrVendLedgEntry1Format</DataField>
-        </Field>
-        <Field Name="VLENo_DtldVendLedgEntry">
-          <DataField>VLENo_DtldVendLedgEntry</DataField>
-        </Field>
-        <Field Name="NegAppliedAmt">
-          <DataField>NegAppliedAmt</DataField>
-        </Field>
-        <Field Name="NegAppliedAmtFormat">
-          <DataField>NegAppliedAmtFormat</DataField>
-        </Field>
-        <Field Name="Description_VendLedgEntry2">
-          <DataField>Description_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="DocNo_VendLedgEntry2">
-          <DataField>DocNo_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="DocType_VendLedgEntry2">
-          <DataField>DocType_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="VEND2AMOUNT">
-          <DataField>VEND2AMOUNT</DataField>
-        </Field>
-        <Field Name="VEND2AMOUNTFormat">
-          <DataField>VEND2AMOUNTFormat</DataField>
-        </Field>
-        <Field Name="PostingDate_VendLedgEntry2">
-          <DataField>PostingDate_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="NegPmtDiscInvCurrVendLedgEntry2">
-          <DataField>NegPmtDiscInvCurrVendLedgEntry2</DataField>
-        </Field>
-        <Field Name="NegPmtDiscInvCurrVendLedgEntry2Format">
-          <DataField>NegPmtDiscInvCurrVendLedgEntry2Format</DataField>
-        </Field>
-        <Field Name="NegPmtTolInvCurr1VendLedgEntry2">
-          <DataField>NegPmtTolInvCurr1VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="NegPmtTolInvCurr1VendLedgEntry2Format">
-          <DataField>NegPmtTolInvCurr1VendLedgEntry2Format</DataField>
-        </Field>
-        <Field Name="Application_PostingDate">
-          <DataField>Application_PostingDate</DataField>
-        </Field>
-        <Field Name="Application_DocumentNo">
-          <DataField>Application_DocumentNo</DataField>
-        </Field>
-        <Field Name="Application_ExtDocumentNo">
-          <DataField>Application_ExtDocumentNo</DataField>
-        </Field>
-        <Field Name="Application_DocumentDate">
-          <DataField>Application_DocumentDate</DataField>
-        </Field>
-        <Field Name="Application_AmountLCY">
-          <DataField>Application_AmountLCY</DataField>
-        </Field>
-        <Field Name="Application_AmountLCYFormat">
-          <DataField>Application_AmountLCYFormat</DataField>
-        </Field>
-        <Field Name="Application_AppliestoID">
-          <DataField>Application_AppliestoID</DataField>
-        </Field>
-        <Field Name="CUSTDOC">
-          <DataField>CUSTDOC</DataField>
-        </Field>
-        <Field Name="CUSTPOST">
-          <DataField>CUSTPOST</DataField>
-        </Field>
-        <Field Name="CUSTDocument_Date">
-          <DataField>CUSTDocument_Date</DataField>
-        </Field>
-        <Field Name="PostDate_CustLedgEntry1">
-          <DataField>PostDate_CustLedgEntry1</DataField>
-        </Field>
-        <Field Name="DocType_CustLedgEntry1">
-          <DataField>DocType_CustLedgEntry1</DataField>
-        </Field>
-        <Field Name="DocumentNo_CustLedgEntry1">
-          <DataField>DocumentNo_CustLedgEntry1</DataField>
-        </Field>
-        <Field Name="Desc_CustLedgEntry1">
-          <DataField>Desc_CustLedgEntry1</DataField>
-        </Field>
-        <Field Name="ShowAmount">
-          <DataField>ShowAmount</DataField>
-        </Field>
-        <Field Name="ShowAmountFormat">
-          <DataField>ShowAmountFormat</DataField>
-        </Field>
-        <Field Name="PmtDiscInvCurr">
-          <DataField>PmtDiscInvCurr</DataField>
-        </Field>
-        <Field Name="PmtDiscInvCurrFormat">
-          <DataField>PmtDiscInvCurrFormat</DataField>
-        </Field>
-        <Field Name="PmtTolInvCurr">
-          <DataField>PmtTolInvCurr</DataField>
-        </Field>
-        <Field Name="PmtTolInvCurrFormat">
-          <DataField>PmtTolInvCurrFormat</DataField>
-        </Field>
-        <Field Name="CurrencyCodeCaption">
-          <DataField>CurrencyCodeCaption</DataField>
-        </Field>
-        <Field Name="AppliedAmount1">
-          <DataField>AppliedAmount1</DataField>
-        </Field>
-        <Field Name="AppliedAmount1Format">
-          <DataField>AppliedAmount1Format</DataField>
-        </Field>
-        <Field Name="AppliedAmount">
-          <DataField>AppliedAmount</DataField>
-        </Field>
-        <Field Name="AppliedAmountFormat">
-          <DataField>AppliedAmountFormat</DataField>
-        </Field>
-        <Field Name="Desc_CustLedgEntry2">
-          <DataField>Desc_CustLedgEntry2</DataField>
-        </Field>
-        <Field Name="DocumentNo_CustLedgEntry2">
-          <DataField>DocumentNo_CustLedgEntry2</DataField>
-        </Field>
-        <Field Name="DocType_CustLedgEntry2">
-          <DataField>DocType_CustLedgEntry2</DataField>
-        </Field>
-        <Field Name="PostDate_CustLedgEntry2">
-          <DataField>PostDate_CustLedgEntry2</DataField>
-        </Field>
-        <Field Name="PmtDiscInvCurr1">
-          <DataField>PmtDiscInvCurr1</DataField>
-        </Field>
-        <Field Name="PmtDiscInvCurr1Format">
-          <DataField>PmtDiscInvCurr1Format</DataField>
-        </Field>
-        <Field Name="PmtTolInvCurr1">
-          <DataField>PmtTolInvCurr1</DataField>
-        </Field>
-        <Field Name="PmtTolInvCurr1Format">
-          <DataField>PmtTolInvCurr1Format</DataField>
-        </Field>
-        <Field Name="Application_PostingDate_Customer">
-          <DataField>Application_PostingDate_Customer</DataField>
-        </Field>
-        <Field Name="Application_DocumentNo_Customer">
-          <DataField>Application_DocumentNo_Customer</DataField>
-        </Field>
-        <Field Name="Application_ExtDocumentNo_Customer">
-          <DataField>Application_ExtDocumentNo_Customer</DataField>
-        </Field>
-        <Field Name="Application_DocumentDate_Customer">
-          <DataField>Application_DocumentDate_Customer</DataField>
-        </Field>
-        <Field Name="Application_AmountLCY_Customer">
-          <DataField>Application_AmountLCY_Customer</DataField>
-        </Field>
-        <Field Name="Application_AmountLCY_CustomerFormat">
-          <DataField>Application_AmountLCY_CustomerFormat</DataField>
-        </Field>
-        <Field Name="Application_AppliestoID_Customer">
-          <DataField>Application_AppliestoID_Customer</DataField>
-        </Field>
-        <Field Name="GSTPER">
-          <DataField>GSTPER</DataField>
-        </Field>
-        <Field Name="GSTPERFormat">
-          <DataField>GSTPERFormat</DataField>
-        </Field>
-        <Field Name="GSTAMT">
-          <DataField>GSTAMT</DataField>
-        </Field>
-        <Field Name="GSTAMTFormat">
-          <DataField>GSTAMTFormat</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -5152,4 +4710,446 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="GLAccountNo_GLEntry">
+          <DataField>GLAccountNo_GLEntry</DataField>
+        </Field>
+        <Field Name="VoucherSourceDesc">
+          <DataField>VoucherSourceDesc</DataField>
+        </Field>
+        <Field Name="DocumentNo_GLEntry">
+          <DataField>DocumentNo_GLEntry</DataField>
+        </Field>
+        <Field Name="BRANCHADDRESS1">
+          <DataField>BRANCHADDRESS1</DataField>
+        </Field>
+        <Field Name="BRANCHADDRESS2">
+          <DataField>BRANCHADDRESS2</DataField>
+        </Field>
+        <Field Name="PostingDateFormatted">
+          <DataField>PostingDateFormatted</DataField>
+        </Field>
+        <Field Name="CompanyInformationAddress">
+          <DataField>CompanyInformationAddress</DataField>
+        </Field>
+        <Field Name="CompanyInformationName">
+          <DataField>CompanyInformationName</DataField>
+        </Field>
+        <Field Name="CreditAmount_GLEntry">
+          <DataField>CreditAmount_GLEntry</DataField>
+        </Field>
+        <Field Name="CreditAmount_GLEntryFormat">
+          <DataField>CreditAmount_GLEntryFormat</DataField>
+        </Field>
+        <Field Name="DebitAmount_GLEntry">
+          <DataField>DebitAmount_GLEntry</DataField>
+        </Field>
+        <Field Name="DebitAmount_GLEntryFormat">
+          <DataField>DebitAmount_GLEntryFormat</DataField>
+        </Field>
+        <Field Name="Caption">
+          <DataField>Caption</DataField>
+        </Field>
+        <Field Name="DrText">
+          <DataField>DrText</DataField>
+        </Field>
+        <Field Name="GLAccName1">
+          <DataField>GLAccName1</DataField>
+        </Field>
+        <Field Name="CrText">
+          <DataField>CrText</DataField>
+        </Field>
+        <Field Name="DebitAmountTotal">
+          <DataField>DebitAmountTotal</DataField>
+        </Field>
+        <Field Name="DebitAmountTotalFormat">
+          <DataField>DebitAmountTotalFormat</DataField>
+        </Field>
+        <Field Name="CreditAmountTotal">
+          <DataField>CreditAmountTotal</DataField>
+        </Field>
+        <Field Name="CreditAmountTotalFormat">
+          <DataField>CreditAmountTotalFormat</DataField>
+        </Field>
+        <Field Name="ChequeDetail">
+          <DataField>ChequeDetail</DataField>
+        </Field>
+        <Field Name="ChequeNo">
+          <DataField>ChequeNo</DataField>
+        </Field>
+        <Field Name="ChequeDate">
+          <DataField>ChequeDate</DataField>
+        </Field>
+        <Field Name="RsNumberText1NumberText2S">
+          <DataField>RsNumberText1NumberText2S</DataField>
+        </Field>
+        <Field Name="EntryNo_GLEntry">
+          <DataField>EntryNo_GLEntry</DataField>
+        </Field>
+        <Field Name="PostingDate_GLEntry">
+          <DataField>PostingDate_GLEntry</DataField>
+        </Field>
+        <Field Name="TransactionNo_GLEntryE">
+          <DataField>TransactionNo_GLEntryE</DataField>
+        </Field>
+        <Field Name="VoucherNoCaption">
+          <DataField>VoucherNoCaption</DataField>
+        </Field>
+        <Field Name="CreditAmountCaption">
+          <DataField>CreditAmountCaption</DataField>
+        </Field>
+        <Field Name="DebitAmountCaption">
+          <DataField>DebitAmountCaption</DataField>
+        </Field>
+        <Field Name="ParticularsCaption">
+          <DataField>ParticularsCaption</DataField>
+        </Field>
+        <Field Name="AmountInWordsCaption">
+          <DataField>AmountInWordsCaption</DataField>
+        </Field>
+        <Field Name="PreparedByCaption">
+          <DataField>PreparedByCaption</DataField>
+        </Field>
+        <Field Name="CheckedByCaption">
+          <DataField>CheckedByCaption</DataField>
+        </Field>
+        <Field Name="ApprovedByCaption">
+          <DataField>ApprovedByCaption</DataField>
+        </Field>
+        <Field Name="Picture">
+          <DataField>Picture</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="Address">
+          <DataField>Address</DataField>
+        </Field>
+        <Field Name="Address2">
+          <DataField>Address2</DataField>
+        </Field>
+        <Field Name="City">
+          <DataField>City</DataField>
+        </Field>
+        <Field Name="PostCode">
+          <DataField>PostCode</DataField>
+        </Field>
+        <Field Name="PageNo">
+          <DataField>PageNo</DataField>
+        </Field>
+        <Field Name="HasApplicationOf">
+          <DataField>HasApplicationOf</DataField>
+        </Field>
+        <Field Name="UserName">
+          <DataField>UserName</DataField>
+        </Field>
+        <Field Name="Preparedby">
+          <DataField>Preparedby</DataField>
+        </Field>
+        <Field Name="ApproveBy">
+          <DataField>ApproveBy</DataField>
+        </Field>
+        <Field Name="PostBy">
+          <DataField>PostBy</DataField>
+        </Field>
+        <Field Name="InvoiceNo">
+          <DataField>InvoiceNo</DataField>
+        </Field>
+        <Field Name="DocDate">
+          <DataField>DocDate</DataField>
+        </Field>
+        <Field Name="PurchComment1">
+          <DataField>PurchComment1</DataField>
+        </Field>
+        <Field Name="PurchComment2">
+          <DataField>PurchComment2</DataField>
+        </Field>
+        <Field Name="PurchComment3">
+          <DataField>PurchComment3</DataField>
+        </Field>
+        <Field Name="PurchComment4">
+          <DataField>PurchComment4</DataField>
+        </Field>
+        <Field Name="PurchComment5">
+          <DataField>PurchComment5</DataField>
+        </Field>
+        <Field Name="PurchComment6">
+          <DataField>PurchComment6</DataField>
+        </Field>
+        <Field Name="PurchComment7">
+          <DataField>PurchComment7</DataField>
+        </Field>
+        <Field Name="PurchComment8">
+          <DataField>PurchComment8</DataField>
+        </Field>
+        <Field Name="PurchComment9">
+          <DataField>PurchComment9</DataField>
+        </Field>
+        <Field Name="PurchComment10">
+          <DataField>PurchComment10</DataField>
+        </Field>
+        <Field Name="tdsper">
+          <DataField>tdsper</DataField>
+        </Field>
+        <Field Name="tdslineamt">
+          <DataField>tdslineamt</DataField>
+        </Field>
+        <Field Name="BillDecptn1">
+          <DataField>BillDecptn1</DataField>
+        </Field>
+        <Field Name="DimValue1">
+          <DataField>DimValue1</DataField>
+        </Field>
+        <Field Name="comet1">
+          <DataField>comet1</DataField>
+        </Field>
+        <Field Name="DimValue">
+          <DataField>DimValue</DataField>
+        </Field>
+        <Field Name="PrintDimensions">
+          <DataField>PrintDimensions</DataField>
+        </Field>
+        <Field Name="Narration_LineNarration">
+          <DataField>Narration_LineNarration</DataField>
+        </Field>
+        <Field Name="PrintLineNarration">
+          <DataField>PrintLineNarration</DataField>
+        </Field>
+        <Field Name="IntegerOccurcesCaption">
+          <DataField>IntegerOccurcesCaption</DataField>
+        </Field>
+        <Field Name="Narration_PostedNarration1">
+          <DataField>Narration_PostedNarration1</DataField>
+        </Field>
+        <Field Name="NarrationCaption">
+          <DataField>NarrationCaption</DataField>
+        </Field>
+        <Field Name="VENPOST">
+          <DataField>VENPOST</DataField>
+        </Field>
+        <Field Name="VENDODC">
+          <DataField>VENDODC</DataField>
+        </Field>
+        <Field Name="VENDocument_Date">
+          <DataField>VENDocument_Date</DataField>
+        </Field>
+        <Field Name="AppliedVLENo_DtldVendLedgEntry">
+          <DataField>AppliedVLENo_DtldVendLedgEntry</DataField>
+        </Field>
+        <Field Name="PostingDate_VendLedgEntry1">
+          <DataField>PostingDate_VendLedgEntry1</DataField>
+        </Field>
+        <Field Name="DocType_VendLedgEntry1">
+          <DataField>DocType_VendLedgEntry1</DataField>
+        </Field>
+        <Field Name="DocNo_VendLedgEntry1">
+          <DataField>DocNo_VendLedgEntry1</DataField>
+        </Field>
+        <Field Name="Description_VendLedgEntry1">
+          <DataField>Description_VendLedgEntry1</DataField>
+        </Field>
+        <Field Name="VEND1AMOUNT">
+          <DataField>VEND1AMOUNT</DataField>
+        </Field>
+        <Field Name="VEND1AMOUNTFormat">
+          <DataField>VEND1AMOUNTFormat</DataField>
+        </Field>
+        <Field Name="NegShowAmountVendLedgEntry1">
+          <DataField>NegShowAmountVendLedgEntry1</DataField>
+        </Field>
+        <Field Name="NegShowAmountVendLedgEntry1Format">
+          <DataField>NegShowAmountVendLedgEntry1Format</DataField>
+        </Field>
+        <Field Name="NegPmtDiscInvCurrVendLedgEntry1">
+          <DataField>NegPmtDiscInvCurrVendLedgEntry1</DataField>
+        </Field>
+        <Field Name="NegPmtDiscInvCurrVendLedgEntry1Format">
+          <DataField>NegPmtDiscInvCurrVendLedgEntry1Format</DataField>
+        </Field>
+        <Field Name="NegPmtTolInvCurrVendLedgEntry1">
+          <DataField>NegPmtTolInvCurrVendLedgEntry1</DataField>
+        </Field>
+        <Field Name="NegPmtTolInvCurrVendLedgEntry1Format">
+          <DataField>NegPmtTolInvCurrVendLedgEntry1Format</DataField>
+        </Field>
+        <Field Name="VLENo_DtldVendLedgEntry">
+          <DataField>VLENo_DtldVendLedgEntry</DataField>
+        </Field>
+        <Field Name="NegAppliedAmt">
+          <DataField>NegAppliedAmt</DataField>
+        </Field>
+        <Field Name="NegAppliedAmtFormat">
+          <DataField>NegAppliedAmtFormat</DataField>
+        </Field>
+        <Field Name="Description_VendLedgEntry2">
+          <DataField>Description_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="DocNo_VendLedgEntry2">
+          <DataField>DocNo_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="DocType_VendLedgEntry2">
+          <DataField>DocType_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="VEND2AMOUNT">
+          <DataField>VEND2AMOUNT</DataField>
+        </Field>
+        <Field Name="VEND2AMOUNTFormat">
+          <DataField>VEND2AMOUNTFormat</DataField>
+        </Field>
+        <Field Name="PostingDate_VendLedgEntry2">
+          <DataField>PostingDate_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="NegPmtDiscInvCurrVendLedgEntry2">
+          <DataField>NegPmtDiscInvCurrVendLedgEntry2</DataField>
+        </Field>
+        <Field Name="NegPmtDiscInvCurrVendLedgEntry2Format">
+          <DataField>NegPmtDiscInvCurrVendLedgEntry2Format</DataField>
+        </Field>
+        <Field Name="NegPmtTolInvCurr1VendLedgEntry2">
+          <DataField>NegPmtTolInvCurr1VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="NegPmtTolInvCurr1VendLedgEntry2Format">
+          <DataField>NegPmtTolInvCurr1VendLedgEntry2Format</DataField>
+        </Field>
+        <Field Name="Application_PostingDate">
+          <DataField>Application_PostingDate</DataField>
+        </Field>
+        <Field Name="Application_DocumentNo">
+          <DataField>Application_DocumentNo</DataField>
+        </Field>
+        <Field Name="Application_ExtDocumentNo">
+          <DataField>Application_ExtDocumentNo</DataField>
+        </Field>
+        <Field Name="Application_DocumentDate">
+          <DataField>Application_DocumentDate</DataField>
+        </Field>
+        <Field Name="Application_AmountLCY">
+          <DataField>Application_AmountLCY</DataField>
+        </Field>
+        <Field Name="Application_AmountLCYFormat">
+          <DataField>Application_AmountLCYFormat</DataField>
+        </Field>
+        <Field Name="Application_AppliestoID">
+          <DataField>Application_AppliestoID</DataField>
+        </Field>
+        <Field Name="CUSTDOC">
+          <DataField>CUSTDOC</DataField>
+        </Field>
+        <Field Name="CUSTPOST">
+          <DataField>CUSTPOST</DataField>
+        </Field>
+        <Field Name="CUSTDocument_Date">
+          <DataField>CUSTDocument_Date</DataField>
+        </Field>
+        <Field Name="PostDate_CustLedgEntry1">
+          <DataField>PostDate_CustLedgEntry1</DataField>
+        </Field>
+        <Field Name="DocType_CustLedgEntry1">
+          <DataField>DocType_CustLedgEntry1</DataField>
+        </Field>
+        <Field Name="DocumentNo_CustLedgEntry1">
+          <DataField>DocumentNo_CustLedgEntry1</DataField>
+        </Field>
+        <Field Name="Desc_CustLedgEntry1">
+          <DataField>Desc_CustLedgEntry1</DataField>
+        </Field>
+        <Field Name="ShowAmount">
+          <DataField>ShowAmount</DataField>
+        </Field>
+        <Field Name="ShowAmountFormat">
+          <DataField>ShowAmountFormat</DataField>
+        </Field>
+        <Field Name="PmtDiscInvCurr">
+          <DataField>PmtDiscInvCurr</DataField>
+        </Field>
+        <Field Name="PmtDiscInvCurrFormat">
+          <DataField>PmtDiscInvCurrFormat</DataField>
+        </Field>
+        <Field Name="PmtTolInvCurr">
+          <DataField>PmtTolInvCurr</DataField>
+        </Field>
+        <Field Name="PmtTolInvCurrFormat">
+          <DataField>PmtTolInvCurrFormat</DataField>
+        </Field>
+        <Field Name="CurrencyCodeCaption">
+          <DataField>CurrencyCodeCaption</DataField>
+        </Field>
+        <Field Name="AppliedAmount1">
+          <DataField>AppliedAmount1</DataField>
+        </Field>
+        <Field Name="AppliedAmount1Format">
+          <DataField>AppliedAmount1Format</DataField>
+        </Field>
+        <Field Name="AppliedAmount">
+          <DataField>AppliedAmount</DataField>
+        </Field>
+        <Field Name="AppliedAmountFormat">
+          <DataField>AppliedAmountFormat</DataField>
+        </Field>
+        <Field Name="Desc_CustLedgEntry2">
+          <DataField>Desc_CustLedgEntry2</DataField>
+        </Field>
+        <Field Name="DocumentNo_CustLedgEntry2">
+          <DataField>DocumentNo_CustLedgEntry2</DataField>
+        </Field>
+        <Field Name="DocType_CustLedgEntry2">
+          <DataField>DocType_CustLedgEntry2</DataField>
+        </Field>
+        <Field Name="PostDate_CustLedgEntry2">
+          <DataField>PostDate_CustLedgEntry2</DataField>
+        </Field>
+        <Field Name="PmtDiscInvCurr1">
+          <DataField>PmtDiscInvCurr1</DataField>
+        </Field>
+        <Field Name="PmtDiscInvCurr1Format">
+          <DataField>PmtDiscInvCurr1Format</DataField>
+        </Field>
+        <Field Name="PmtTolInvCurr1">
+          <DataField>PmtTolInvCurr1</DataField>
+        </Field>
+        <Field Name="PmtTolInvCurr1Format">
+          <DataField>PmtTolInvCurr1Format</DataField>
+        </Field>
+        <Field Name="Application_PostingDate_Customer">
+          <DataField>Application_PostingDate_Customer</DataField>
+        </Field>
+        <Field Name="Application_DocumentNo_Customer">
+          <DataField>Application_DocumentNo_Customer</DataField>
+        </Field>
+        <Field Name="Application_ExtDocumentNo_Customer">
+          <DataField>Application_ExtDocumentNo_Customer</DataField>
+        </Field>
+        <Field Name="Application_DocumentDate_Customer">
+          <DataField>Application_DocumentDate_Customer</DataField>
+        </Field>
+        <Field Name="Application_AmountLCY_Customer">
+          <DataField>Application_AmountLCY_Customer</DataField>
+        </Field>
+        <Field Name="Application_AmountLCY_CustomerFormat">
+          <DataField>Application_AmountLCY_CustomerFormat</DataField>
+        </Field>
+        <Field Name="Application_AppliestoID_Customer">
+          <DataField>Application_AppliestoID_Customer</DataField>
+        </Field>
+        <Field Name="GSTPER">
+          <DataField>GSTPER</DataField>
+        </Field>
+        <Field Name="GSTPERFormat">
+          <DataField>GSTPERFormat</DataField>
+        </Field>
+        <Field Name="GSTAMT">
+          <DataField>GSTAMT</DataField>
+        </Field>
+        <Field Name="GSTAMTFormat">
+          <DataField>GSTAMTFormat</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>
