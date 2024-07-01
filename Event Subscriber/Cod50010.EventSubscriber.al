@@ -27,4 +27,14 @@ codeunit 50010 "Event Subscriber"
         if SourceSalesHeader.Get(SourceSalesHeader."Document Type"::Order, WarehouseRequest."Source No.") then
             RecordLinkMgt.CopyLinks(SourceSalesHeader, WhseShptHeader);
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Get Source Doc. Inbound", OnAfterCreateWhseReceiptHeaderFromWhseRequest, '', false, false)]
+    local procedure OnAfterCreateWhseReceiptHeaderFromWhseRequest(var WhseReceiptHeader: Record "Warehouse Receipt Header"; var WarehouseRequest: Record "Warehouse Request")
+    var
+        SourcePurchaseHeader: Record "Purchase Header";
+        RecordLinkMgt: Codeunit "Record Link Management";
+    begin
+        if SourcePurchaseHeader.Get(SourcePurchaseHeader."Document Type"::Order, WarehouseRequest."Source No.") then
+            RecordLinkMgt.CopyLinks(SourcePurchaseHeader, WhseReceiptHeader);
+    end;
 }
