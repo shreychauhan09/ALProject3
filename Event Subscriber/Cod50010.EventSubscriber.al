@@ -17,5 +17,14 @@ codeunit 50010 "Event Subscriber"
         SalesHeader.Invoice := true;
         IsHandled := true;
     end;
-}
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Get Source Doc. Outbound", OnAfterCreateWhseShipmentHeaderFromWhseRequest, '', false, false)]
+    local procedure Outbound_OnAfterCreateWhseShipmentHeaderFromWhseRequest(var WarehouseRequest: Record "Warehouse Request"; var WhseShptHeader: Record "Warehouse Shipment Header")
+    var
+        SourceSalesHeader: Record "Sales Header";
+        RecordLinkMgt: Codeunit "Record Link Management";
+    begin
+        if SourceSalesHeader.Get(SourceSalesHeader."Document Type"::Order, WarehouseRequest."Source No.") then
+            RecordLinkMgt.CopyLinks(SourceSalesHeader, WhseShptHeader);
+    end;
+}
