@@ -43,4 +43,12 @@ codeunit 50010 "Event Subscriber"
     begin
         IsHandled := true;
     end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Shipment Line", OnBeforeInsertInvLineFromShptLine, '', false, false)]
+    local procedure "Sales Shipment Line_OnBeforeInsertInvLineFromShptLine"(var SalesShptLine: Record "Sales Shipment Line"; var SalesLine: Record "Sales Line"; SalesOrderLine: Record "Sales Line"; var IsHandled: Boolean; var TransferOldExtTextLines: Codeunit "Transfer Old Ext. Text Lines")
+    begin
+        IsHandled := true;
+    end;
+
+
 }
