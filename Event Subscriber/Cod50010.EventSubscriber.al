@@ -37,4 +37,10 @@ codeunit 50010 "Event Subscriber"
         if SourcePurchaseHeader.Get(SourcePurchaseHeader."Document Type"::Order, WarehouseRequest."Source No.") then
             RecordLinkMgt.CopyLinks(SourcePurchaseHeader, WhseReceiptHeader);
     end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purch. Rcpt. Line", OnInsertInvLineFromRcptLineOnBeforeCheckPurchLineReceiptNo, '', false, false)]
+    local procedure OnInsertInvLineFromRcptLineOnBeforeCheckPurchLineReceiptNo(var IsHandled: Boolean)
+    begin
+        IsHandled := true;
+    end;
 }
