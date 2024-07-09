@@ -1,4 +1,4 @@
-page 50102 "GST Portal"
+page 50111 "GST Portal"
 {
     Caption = 'GST Portal';
     PageType = ListPart;

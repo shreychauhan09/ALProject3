@@ -1,4 +1,4 @@
-page 50132 Stocks
+page 50114 Stocks
 {
     PageType = ListPart;
     ApplicationArea = All;

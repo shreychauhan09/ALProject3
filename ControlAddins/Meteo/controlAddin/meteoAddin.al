@@ -11,13 +11,13 @@ controladdin MeteoAddin
     HorizontalStretch = true;
     HorizontalShrink = true;
 
-    StartupScript = 'src\ControlAddins\Meteo\js\main.js';
+    StartupScript = 'ControlAddins\Meteo\js\main.js';
 
     // SCRIPT Plugin
     Scripts =
 
             'https://code.jquery.com/jquery-3.6.0.min.js',// jquery  
-            'src\ControlAddins\Meteo\js\meteo.js'
+            'ControlAddins\Meteo\js\meteo.js'
         ;
 
 

@@ -11,14 +11,14 @@ controladdin StocksAddin
     HorizontalStretch = true;
     HorizontalShrink = true;
 
-    StartupScript = 'src\ControlAddins\stocks\js\main.js';
+    StartupScript = 'ControlAddins\stocks\js\main.js';
 
     // SCRIPT Plugin
     Scripts =
 
             'https://code.jquery.com/jquery-3.6.0.min.js',// jquery  
                                                          'https://s3.tradingview.com/tv.js',
-                                                         'src\ControlAddins\stocks\js\stocks.js'
+                                                         'ControlAddins\stocks\js\stocks.js'
         ;
 
 

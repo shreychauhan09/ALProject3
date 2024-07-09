@@ -11,7 +11,7 @@ controladdin ExchangeAddin
     HorizontalStretch = true;
     HorizontalShrink = true;
 
-    StartupScript = 'src\ControlAddins\exchange\js\exchange.js';
+    StartupScript = 'ControlAddins\exchange\js\exchange.js';
 
 
     // SCRIPT Plugin

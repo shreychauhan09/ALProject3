@@ -1,6 +1,6 @@
 
 /// ROLE CENTER EXTENSION - BUSINESS MANAGER ROLE CENTER
-pageextension 50135 roleCenterExt extends "Business Manager Role Center"
+pageextension 50115 roleCenterExt extends "Business Manager Role Center"
 {
 
     layout

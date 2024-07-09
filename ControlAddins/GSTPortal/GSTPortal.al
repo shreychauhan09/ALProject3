@@ -11,7 +11,7 @@ controladdin GSTPortal
     HorizontalStretch = true;
     HorizontalShrink = true;
 
-    StartupScript = 'src\ControlAddins\GSTPortal\js\GSTPortal.js';
+    StartupScript = 'ControlAddins\GSTPortal\js\GSTPortal.js';
 
 
     // SCRIPT Plugin
