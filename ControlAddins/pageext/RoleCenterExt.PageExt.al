@@ -22,11 +22,16 @@ pageextension 50115 roleCenterExt extends "Business Manager Role Center"
                 ApplicationArea = All;
 
             }
-            part(gstportal; "GST Portal")
+        }
+        addbefore(Control55)
+        {
+            group("GST Portal")
             {
-                ApplicationArea = All;
+                part(gstportal; "GST Portal")
+                {
+                    ApplicationArea = All;
+                }
             }
-
         }
     }
 

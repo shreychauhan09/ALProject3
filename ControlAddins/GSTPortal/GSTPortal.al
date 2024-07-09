@@ -1,15 +1,15 @@
 controladdin GSTPortal
 {
-    RequestedHeight = 300;
-    MinimumHeight = 300;
-    MaximumHeight = 300;
-    RequestedWidth = 700;
-    MinimumWidth = 400;
-    MaximumWidth = 700;
+    RequestedHeight = 500;
+    MinimumHeight = 400;
+    MaximumHeight = 600;
+    RequestedWidth = 1300;
+    MinimumWidth = 1000;
+    MaximumWidth = 1500;
     VerticalStretch = true;
-    VerticalShrink = true;
+    VerticalShrink = false;
     HorizontalStretch = true;
-    HorizontalShrink = true;
+    HorizontalShrink = false;
 
     StartupScript = 'ControlAddins\GSTPortal\js\GSTPortal.js';
 
