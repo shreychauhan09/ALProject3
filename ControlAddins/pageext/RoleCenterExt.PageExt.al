@@ -32,6 +32,13 @@ pageextension 50115 roleCenterExt extends "Business Manager Role Center"
                     ApplicationArea = All;
                 }
             }
+            group(GSTs)
+            {
+                part(GST; GST)
+                {
+                    ApplicationArea = All;
+                }
+            }
         }
     }
 
