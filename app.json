@@ -3,13 +3,8 @@
     "name": "ALProject3",
     "publisher": "Default Publisher",
     "version": "1.0.0.1",
-    "brief": "",
-    "description": "",
-    "privacyStatement": "",
-    "EULA": "",
-    "help": "",
-    "url": "",
-    "logo": "",
+    "brief": "Study Project",
+    "description": "Study Project",
     "dependencies": [
         {
             "name": "India GST",

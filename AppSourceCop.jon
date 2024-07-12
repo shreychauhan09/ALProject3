@@ -1,0 +1,6 @@
+{
+    "name": "Hexagon",
+    "publisher": "Leaping Frog Solution Pvt Ltd",
+    "mandatoryAffixes": [ "SHREY" ],
+    "supportedCountries": ["IN"]
+}
