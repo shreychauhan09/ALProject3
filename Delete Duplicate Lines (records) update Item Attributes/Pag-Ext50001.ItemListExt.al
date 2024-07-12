@@ -54,6 +54,21 @@ pageextension 50001 "Item List Ext" extends "Item List"
                 trigger OnAction()
                 begin
                     CurrPage.SetSelectionFilter(Rec);
+                    // Rec.Reset();
+                end;
+            }
+            action(CountDeSelected)
+            {
+
+                Caption = 'Count De-Selected';
+                ApplicationArea = All;
+                Image = Calculate;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                trigger OnAction()
+                begin
+                    // CurrPage.SetSelectionFilter(Rec);
                     Rec.Reset();
                 end;
             }
