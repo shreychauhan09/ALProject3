@@ -11,5 +11,10 @@ tableextension 50001 "Item tab ext" extends Item
             DataClassification = ToBeClassified;
             Subtype = Bitmap;
         }
+        field(50100; "Blob Picture"; BLOB)
+        {
+            Caption = 'Blob Picture';
+            SubType = Bitmap;
+        }
     }
 }
