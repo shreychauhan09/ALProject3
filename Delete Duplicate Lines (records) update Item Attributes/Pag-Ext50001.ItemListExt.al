@@ -72,6 +72,19 @@ pageextension 50001 "Item List Ext" extends "Item List"
                     Rec.Reset();
                 end;
             }
+            action(SaveQueryAsJson)
+            {
+                ApplicationArea = All;
+                Caption = 'Save Query As Json';
+                Image = Download;
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                begin
+                    SaveQueryAsJson();
+                    ReadQueryAsJson();
+                end;
+            }
         }
 
         addafter(CopyItem)
@@ -177,4 +190,34 @@ pageextension 50001 "Item List Ext" extends "Item List"
             }
         }
     }
+    procedure SaveQueryAsJson();
+    var
+        OutS: OutStream;
+        InS: InStream;
+        TempBlob: Codeunit "Temp Blob";
+        FileName: Text[250];
+    begin
+        TempBlob.CreateOutStream(OutS);
+        // if Query.SaveAsJson(Query::"ZY Purchase Order Query", OutS) then begin
+        //     FileName := 'PurchaseOrderQuery.json';
+        //     TempBlob.CreateInStream(InS);
+        //     DownloadFromStream(InS, '', '', '', FileName);
+        // end;
+    end;
+
+    procedure ReadQueryAsJson();
+    var
+        OutS: OutStream;
+        InS: InStream;
+        TempBlob: Codeunit "Temp Blob";
+        TypeHelper: Codeunit "Type Helper";
+        JsonString: Text;
+    begin
+        TempBlob.CreateInStream(InS);
+        TempBlob.CreateOutStream(OutS);
+        // if Query.SaveAsJson(Query::"ZY Purchase Order Query", OutS) then begin
+        //     JsonString := TypeHelper.TryReadAsTextWithSepAndFieldErrMsg(InS, TypeHelper.LFSeparator(), 'ZY Purchase Order Query');
+        //     Message(JsonString);
+        // end;
+    end;
 }

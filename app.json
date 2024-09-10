@@ -111,7 +111,7 @@
         "allowDownloadingSource": true,
         "includeSourceInSymbolFile": true
     },
-    "runtime": "12.1",
+    "runtime": "13.0",
     "features": [
         "NoImplicitWith"
     ]
