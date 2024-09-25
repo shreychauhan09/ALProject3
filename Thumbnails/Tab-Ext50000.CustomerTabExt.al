@@ -16,5 +16,10 @@ tableextension 50000 "Customer Tab Ext" extends Customer
             DataClassification = CustomerContent;
             Caption = 'Facebook';
         }
+        field(50200; "Multiple Location Codes"; Text[250])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Multiple Location Codes';
+        }
     }
 }

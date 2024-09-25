@@ -118,6 +118,47 @@ pageextension 50001 "Item List Ext" extends "Item List"
                     Rec.FindFirst();
                 end;
             }
+            action("Expiration Calculation")
+            {
+                ApplicationArea = All;
+                Caption = 'Expiration Calculation';
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                var
+                    ExpirationFormula, ShelfLife : Text;
+
+                begin
+                    ExpirationFormula := Format(Rec."Expiration Calculation"); // Convert DateFormula to Text
+
+                    // Check if the Expiration Calculation field is not empty
+                    if ExpirationFormula <> '' then
+                        case CopyStr(ExpirationFormula, StrLen(ExpirationFormula), 1) of
+                            'Y':
+                                ShelfLife := CopyStr(ExpirationFormula, 1, StrLen(ExpirationFormula) - 1) + ' Years';
+                            'M':
+                                ShelfLife := CopyStr(ExpirationFormula, 1, StrLen(ExpirationFormula) - 1) + ' Months';
+                            'W':
+                                ShelfLife := CopyStr(ExpirationFormula, 1, StrLen(ExpirationFormula) - 1) + ' Weeks';
+                            'D':
+                                ShelfLife := CopyStr(ExpirationFormula, 1, StrLen(ExpirationFormula) - 1) + ' Days';
+                            'Q':
+                                ShelfLife := CopyStr(ExpirationFormula, 1, StrLen(ExpirationFormula) - 1) + ' Quaterlty';
+                            'CM':
+                                ShelfLife := CopyStr(ExpirationFormula, 1, StrLen(ExpirationFormula) - 1) + ' Current Month';
+                            'CW':
+                                ShelfLife := CopyStr(ExpirationFormula, 1, StrLen(ExpirationFormula) - 1) + ' Current Week';
+                            'CY':
+                                ShelfLife := CopyStr(ExpirationFormula, 1, StrLen(ExpirationFormula) - 1) + ' Current Year';
+                            'CQ':
+                                ShelfLife := CopyStr(ExpirationFormula, 1, StrLen(ExpirationFormula) - 1) + ' Current Quater';
+                            else
+                                ShelfLife := 'Unknown Format';
+                        end else
+                        ShelfLife := 'No Expiration Calculation';
+                    Message(ShelfLife);
+                end;
+            }
             fileuploadaction(ImportMultipleItemPictures)
             {
                 ApplicationArea = All;
