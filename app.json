@@ -95,6 +95,30 @@
           "version": "24.0.16410.18056",
           "publisher": "Microsoft",
           "id": "68e13fa3-217a-4be0-9141-99e5bf0ca818"
+        },
+        {
+          "name": "Enforced Digital Vouchers",
+          "version": "24.0.16410.18056",
+          "publisher": "Microsoft",
+          "id": "e2ae191d-8829-44c3-a373-3749a2742d4e"
+        },
+        {
+          "name": "Dynamics BC Excel Reports",
+          "version": "24.0.16410.18056",
+          "publisher": "Microsoft",
+          "id": "cc11c22e-5ca3-423f-8804-88cac6d91983"
+        },
+        {
+          "name": "India Charge Group",
+          "version": "24.0.16410.18056",
+          "publisher": "Microsoft",
+          "id": "07729019-da51-4639-a987-3db38ccc62c7"
+        },
+        {
+          "name": "OnPrem Permissions",
+          "version": "24.0.16410.18056",
+          "publisher": "Microsoft",
+          "id": "8ac0f4d5-2f64-438c-8441-3cabccd78edc"
         }
     ],
     "screenshots": [],
