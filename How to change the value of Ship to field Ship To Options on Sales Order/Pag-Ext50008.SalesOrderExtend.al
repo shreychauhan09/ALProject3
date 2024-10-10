@@ -127,6 +127,7 @@ pageextension 50008 "Sales Order Extend" extends "Sales Order"
                     RecRef: RecordRef;
                     FldRef: FieldRef;
                     TempBlob: Codeunit "Temp Blob";
+                    QRCodeProvider: Codeunit "QR Generator";
                 begin
                     if SalesHeader.Get(Rec."Document Type", Rec."No.") then begin
                         RecRef.GetTable(SalesHeader);
@@ -134,6 +135,7 @@ pageextension 50008 "Sales Order Extend" extends "Sales Order"
                         FldRef.SetRange(SalesHeader."No.");
                         TempBlob.CreateOutStream(OutStr);
                         Report.SaveAs(Report::"Standard Sales - Order Conf.", '', ReportFormat::Pdf, OutStr, RecRef);
+                        QRCodeProvider.GenerateQRCodeImage(Format(OutStr), TempBlob);
                         TempBlob.CreateInStream(InStr);
                         LargeText := Base64Convert.ToBase64(InStr, false);
                         SetLargeText(LargeText);
@@ -164,7 +166,7 @@ pageextension 50008 "Sales Order Extend" extends "Sales Order"
         SalesHeader.Get(Rec."Document Type", Rec."No.");
         SalesHeader."Large Text".CreateOutStream(OutStream, TEXTENCODING::UTF8);
         OutStream.WriteText(LargeText);
-        QRCodeProvider.GenerateQRCodeImage(LargeText, TempBlob);
+        // QRCodeProvider.GenerateQRCodeImage(LargeText, TempBlob);
         SalesHeader.Modify();
     end;
 
