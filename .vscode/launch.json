@@ -33,7 +33,7 @@
             "port": 7049,
             "debugServer": 4711,
             "breakOnRecordWrite": "All",
-            "startupCompany": "CRONUS India Ltd.",
+            // "startupCompany": "CRONUS India Ltd.",
             // "schemaUpdateMode": "ForceSync"
             // "longRunningSqlStatementsThreshold": 500,
             // "breakOnNext": "WebClient"

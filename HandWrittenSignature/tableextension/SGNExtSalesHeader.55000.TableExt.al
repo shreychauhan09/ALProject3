@@ -8,6 +8,17 @@ tableextension 55000 "SGN Ext. Sales Header" extends "Sales Header"
             DataClassification = CustomerContent;
             SubType = Bitmap;
         }
+        field(50101; "Large Text"; Blob)
+        {
+            Caption = 'Large Text';
+            DataClassification = CustomerContent;
+        }
+        field(50102; "QR Code"; Blob)
+        {
+            Subtype = Bitmap;
+            Caption = 'QR Code';
+            DataClassification = CustomerContent;
+        }
     }
 
     procedure SignDocument(var Base64Text: Text)

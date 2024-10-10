@@ -12,6 +12,26 @@ pageextension 50008 "Sales Order Extend" extends "Sales Order"
                 GetYearPeriodFromGivenDate(Rec."Posting Date");
             end;
         }
+        addlast(General)
+        {
+            field(LargeText; LargeText)
+            {
+                Caption = 'Large Text';
+                ApplicationArea = All;
+                MultiLine = true;
+                ShowCaption = false;
+                trigger OnValidate()
+                begin
+                    SetLargeText(LargeText);
+                end;
+            }
+            field("QR Code"; Rec."QR Code")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the QR Code field.', Comment = '%';
+            }
+
+        }
     }
     actions
     {
@@ -87,12 +107,76 @@ pageextension 50008 "Sales Order Extend" extends "Sales Order"
                 end;
             }
         }
+        addafter(Post)
+        {
+            action(SaveReportAsEncodedText)
+            {
+                Caption = 'Save Sales Report As Encoded Text';
+                Image = Transactions;
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    Base64Convert: Codeunit "Base64 Convert";
+                    InStr: InStream;
+                    OutStr: OutStream;
+                    SalesHeader: Record "Sales Header";
+                    RecRef: RecordRef;
+                    FldRef: FieldRef;
+                    TempBlob: Codeunit "Temp Blob";
+                begin
+                    if SalesHeader.Get(Rec."Document Type", Rec."No.") then begin
+                        RecRef.GetTable(SalesHeader);
+                        FldRef := RecRef.Field(SalesHeader.FieldNo("No."));
+                        FldRef.SetRange(SalesHeader."No.");
+                        TempBlob.CreateOutStream(OutStr);
+                        Report.SaveAs(Report::"Standard Sales - Order Conf.", '', ReportFormat::Pdf, OutStr, RecRef);
+                        TempBlob.CreateInStream(InStr);
+                        LargeText := Base64Convert.ToBase64(InStr, false);
+                        SetLargeText(LargeText);
+                    end;
+                end;
+            }
+        }
     }
     var
         WeekMsg: Label 'This week: %1 ~ %2\Last week: %3 ~ %4\Next week: %5 ~ %6';
         MonthMsg: Label 'This month: %1 ~ %2\Last month: %3 ~ %4\Next month: %5 ~ %6';
         QuarterMsg: Label 'This quarter: %1 ~ %2\Last quarter: %3 ~ %4\Next quarter: %5 ~ %6';
         YearMsg: Label 'This year: %1 ~ %2\Last year: %3 ~ %4\Next year: %5 ~ %6';
+        LargeText: Text;
+
+    trigger OnAfterGetRecord()
+    begin
+        LargeText := GetLargeText();
+    end;
+
+    procedure SetLargeText(NewLargeText: Text)
+    var
+        OutStream: OutStream;
+        SalesHeader: Record "Sales Header";
+        QRCodeProvider: Codeunit "QR Generator";
+        TempBlob: Codeunit "Temp Blob";
+    begin
+        SalesHeader.Get(Rec."Document Type", Rec."No.");
+        SalesHeader."Large Text".CreateOutStream(OutStream, TEXTENCODING::UTF8);
+        OutStream.WriteText(LargeText);
+        QRCodeProvider.GenerateQRCodeImage(LargeText, TempBlob);
+        SalesHeader.Modify();
+    end;
+
+    procedure GetLargeText() NewLargeText: Text
+    var
+        TypeHelper: Codeunit "Type Helper";
+        InStream: InStream;
+    begin
+        Rec.CalcFields("Large Text");
+        Rec."Large Text".CreateInStream(InStream, TEXTENCODING::UTF8);
+        exit(TypeHelper.TryReadAsTextWithSepAndFieldErrMsg(InStream, TypeHelper.LFSeparator(), Rec.FieldName("Large Text")));
+    end;
 
     local procedure GetWeekPeriodFromGivenDate(GivenDate: Date)
     var
