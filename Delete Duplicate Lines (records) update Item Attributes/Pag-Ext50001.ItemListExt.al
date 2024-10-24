@@ -296,4 +296,30 @@ pageextension 50001 "Item List Ext" extends "Item List"
         //     Message(JsonString);
         // end;
     end;
+
+    trigger OnOpenPage()
+    var
+        SearchString: Text[250];
+        RecRef: RecordRef;
+        FldRef: FieldRef;
+    begin
+        SearchString := 'London chair blue';
+        Rec.SetFilter(Description, SplitSearchString(SearchString));
+    end;
+
+    local procedure SplitSearchString(var SearchString: Text[250]): Text[250]
+    var
+        i: Integer;
+        StringList: List of [Text];
+    begin
+        StringList := SearchString.Split(' ');
+        if StringList.Count > 0 then
+            for i := 1 to StringList.Count do begin
+                if i = 1 then
+                    SearchString := '&&' + StringList.Get(i) + '*'
+                else
+                    SearchString := SearchString + '&&&' + StringList.Get(i) + '*';
+            end;
+        exit(SearchString);
+    end;
 }
