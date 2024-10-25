@@ -19,7 +19,7 @@
             // "request": "attach",
             "type": "al",
             "environmentType": "OnPrem",
-            "server": " http://DESKTOP-IV1KDP1:8080/BC240/Webclient/",
+            "server": "http://DESKTOP-IV1KDP1:8080/BC240/Webclient/",
             "serverInstance": "BC240",
             "authentication": "Windows",
             // "startupObjectId": 22,
